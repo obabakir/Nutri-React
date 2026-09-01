@@ -116,6 +116,7 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
                 <p className={"data-compl"}>
                   {moment().format("YY-MM-DD HH:mm")}
                 </p>
+
                 <Button
                   value={order._id}
                   onClick={finishOrderHandler}

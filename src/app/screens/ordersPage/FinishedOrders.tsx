@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Stack } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import TabPanel from "@mui/lab/TabPanel";
 
 // ======
@@ -9,9 +9,14 @@ import { createSelector } from "reselect";
 
 import { retrieveFinishedOrders } from "./selector";
 
-import { serverApi } from "../../../lib/config";
-import { Order, OrderItem } from "../../../lib/types/order";
+import { Messages, serverApi } from "../../../lib/config";
+import { Order, OrderItem, OrderUpdateInput } from "../../../lib/types/order";
 import { Product } from "../../../lib/types/product";
+import { useGlobals } from "../../hooks/useGlabals";
+import { OrderStatus } from "../../../lib/enums/order.enum";
+import OrderService from "../../services/OrderServise";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { T } from "../../../lib/types/common";
 
 const finishedOrdersRetriever = createSelector(
   retrieveFinishedOrders,
@@ -20,7 +25,31 @@ const finishedOrdersRetriever = createSelector(
 
 export default function FinishedOrders() {
   const { finishedOrders } = useSelector(finishedOrdersRetriever);
+  const { authMember, setOrderBuilder } = useGlobals();
   console.log("finishedOrders => :", finishedOrders);
+
+  // ====
+  const deleteOrderHandler = async (e: T) => {
+    try {
+      if (!authMember) throw new Error(Messages.error2);
+      const orderId = e.target.value;
+      const input: OrderUpdateInput = {
+        orderId: orderId,
+        orderStatus: OrderStatus.DELETE,
+      };
+      // comfirm tugmasi un
+      const confirmation = window.confirm("You are deleting Finished Order!");
+      if (confirmation) {
+        const order = new OrderService();
+        await order.updateOrder(input);
+        // REFRESH CONTEXT
+        setOrderBuilder(new Date());
+      }
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
+  };
   return (
     <TabPanel value={"3"}>
       <Stack>
@@ -56,6 +85,7 @@ export default function FinishedOrders() {
               </Box>
 
               <Box className={"total-price-box"}>
+                {/* here to change   as box size is small but no css " width: " related*/}
                 <Box className={"box-total"}>
                   <p>Product price</p>
                   <p>${order.orderTotal - order.orderDelivery}</p>
@@ -68,6 +98,19 @@ export default function FinishedOrders() {
                   />
                   <p>Total</p>
                   <p>${order.orderTotal}</p>
+                  <Button
+                    sx={{
+                      // here to change , button is squeezed
+                      marginLeft: 1,
+                    }}
+                    value={order._id}
+                    onClick={deleteOrderHandler}
+                    variant="contained"
+                    color="secondary"
+                    className={"cancel-button"}
+                  >
+                    Cancel
+                  </Button>
                 </Box>
               </Box>
             </Box>

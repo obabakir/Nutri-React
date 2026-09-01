@@ -275,6 +275,8 @@
   align-items: center;
   max-width: 170px;
   height: 100%;
+
+  /* -------------- */
   margin-left: 150px;
 }
 
@@ -328,9 +330,9 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  max-width: 535px;
+  max-width: 850px;
   height: 100%;
 }
 
