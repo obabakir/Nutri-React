@@ -55,7 +55,7 @@ export default function OrdersPage() {
     authMember?.memberDesc ? authMember.memberDesc : "no description",
   );
   const [memberTypeIcon, setMemberTypeIcon] = useState<string>(
-    authMember?.memberType === MemberType.RESTAURANT
+    authMember?.memberType === MemberType.ADMIN
       ? "/icons/restaurant.svg"
       : "/icons/user-badge.svg",
   );

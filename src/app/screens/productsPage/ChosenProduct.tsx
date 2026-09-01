@@ -5,6 +5,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Divider from "../../components/divider";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
+
 import { useParams } from "react-router-dom"; // @ts-ignore
 import { FreeMode, Navigation, Thumbs } from "swiper";
 // @ts-ignore
@@ -84,6 +85,7 @@ export default function ChosenProduct(props: ChosenProductProps) {
   return (
     <div className={"chosen-product"}>
       <Box className={"title"}>Product Detail</Box>
+      <Divider height="3" width="180" bg="#c49a6c" />
       <Container className={"product-container"}>
         <Stack className={"chosen-product-slider"}>
           <Swiper
@@ -108,8 +110,14 @@ export default function ChosenProduct(props: ChosenProductProps) {
             <strong className={"product-name"}>
               {chosenProduct?.productName}
             </strong>
-            <span className={"resto-name"}>{restaurant?.memberNick}</span>
-            <span className={"resto-name"}>{restaurant?.memberPhone}</span>
+            <span className={"resto-name"}>
+              {restaurant?.memberNick
+                ? "NUTRIMART ADMIN:"
+                : restaurant?.memberNick}
+            </span>
+            <span className={"resto-name"}>
+              {restaurant?.memberPhone ?? "Not Available"}
+            </span>
             <Box className={"rating-box"}>
               <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
               <div className={"evaluation-box"}>
@@ -127,7 +135,7 @@ export default function ChosenProduct(props: ChosenProductProps) {
             <Divider height="1" width="100%" bg="#000000" />
             <div className={"product-price"}>
               <span>Price:</span>
-              <span>{chosenProduct?.productPrice}</span>
+              <span>$ {chosenProduct?.productPrice}</span>
             </div>
             <div className={"button-box"}>
               <Button

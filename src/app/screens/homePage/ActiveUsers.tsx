@@ -11,6 +11,7 @@ import { createSelector } from "reselect";
 import { retrievePopularDishes, retrieveTopUsers } from "./selector";
 import { Member } from "../../../lib/types/member";
 import { serverApi } from "../../../lib/config";
+import { Console } from "console";
 
 // ====== Redux Slice & Selector Retriever
 const topUsersRetriever = createSelector(retrieveTopUsers, (topUsers) => ({
@@ -19,6 +20,7 @@ const topUsersRetriever = createSelector(retrieveTopUsers, (topUsers) => ({
 
 export default function ActiveUsers() {
   const { topUsers } = useSelector(topUsersRetriever);
+  console.log("topUsers => :", topUsers);
   return (
     <div className={"active-users-frame"}>
       <Container>

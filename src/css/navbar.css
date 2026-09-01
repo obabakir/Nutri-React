@@ -244,8 +244,272 @@
 }
 
 /* BASKET */
+/* =========================================================
+   BASKET
+========================================================= */
 
 .basket-frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 450px;
+  padding: 10px 6px 0px 6px;
+  border-radius: 18px;
+  background: #f5efe6;
+  box-shadow: 0 10px 30px rgba(92, 70, 48, 0.18);
+}
+
+/* =========================================================
+   CART HEADER
+========================================================= */
+
+.basket-frame .all-check-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 48px;
+  padding: 0px 12px;
+  border-bottom: 1px solid #e4d8c8;
+  border-radius: 12px 12px 0px 0px;
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 700;
+  color: #5c4630;
+  background: #fffdf9;
+}
+
+/* =========================================================
+   PRODUCTS MAIN AREA
+========================================================= */
+
+.basket-frame .orders-main-wrapper {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: 3200px;
+  margin-top: 10px;
+}
+
+/* =========================================================
+   PRODUCTS SCROLL AREA
+========================================================= */
+
+.basket-frame .orders-wrapper {
+  position: relative;
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex-direction: column;
+  gap: 9px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 4px 8px 10px 4px;
+}
+
+/* Scrollbar */
+
+.basket-frame .orders-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.basket-frame .orders-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #c9b69e;
+}
+
+.basket-frame .orders-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* =========================================================
+   PRODUCT ITEM
+========================================================= */
+
+.basket-frame .basket-info-box {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 82px;
+  padding: 10px;
+  border: 1px solid #eadfd1;
+  border-radius: 14px;
+  margin: 0;
+  background: #fffdf9;
+  box-shadow: 0 3px 12px rgba(92, 70, 48, 0.08);
+  transition: all 0.25s ease;
+}
+
+/* Product hover */
+
+.basket-frame .basket-info-box:hover {
+  border-color: #cdb99d;
+  box-shadow: 0 8px 22px rgba(92, 70, 48, 0.14);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   PRODUCT IMAGE
+========================================================= */
+
+.basket-info-box .product-img {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #eadfd1;
+  border-radius: 12px;
+  background: #f1e8dc;
+  filter: drop-shadow(0px 2px 5px rgba(92, 70, 48, 0.12));
+  object-fit: cover;
+}
+
+/* =========================================================
+   PRODUCT NAME
+========================================================= */
+
+.basket-info-box .product-name {
+  overflow: hidden;
+  width: 185px;
+  margin-left: 12px;
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #4d3927;
+}
+
+/* =========================================================
+   PRODUCT PRICE
+========================================================= */
+
+.basket-info-box .product-price {
+  width: 80px;
+  margin: 0;
+  font-family: "Poppins";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #232222;
+}
+
+/* =========================================================
+   DELETE / CANCEL
+========================================================= */
+
+.basket-frame .cancel-btn {
+  position: absolute;
+  top: 55%;
+  right: 10px;
+  z-index: 5;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* =========================================================
+   ORDER FOOTER
+========================================================= */
+
+.basket-frame .basket-order {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 64px;
+  padding: 10px 14px;
+  border-top: 1px solid #e4d8c8;
+  border-radius: 0px 0px 14px 14px;
+  margin-top: 10px;
+  background: #fffdf9;
+}
+
+/* =========================================================
+   TOTAL PRICE
+========================================================= */
+
+.basket-order .price {
+  display: flex;
+  width: auto;
+  max-width: 250px;
+  font-family: "Poppins";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  color: #5c4630;
+}
+
+/* =========================================================
+   QUANTITY BUTTONS
+========================================================= */
+
+.basket-info-box .remove,
+.basket-info-box .add {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.basket-info-box .remove {
+  color: #6d5238;
+  background: #eee4d7;
+}
+
+.basket-info-box .add {
+  color: #ffffff;
+  background: #8b6f47;
+}
+
+.basket-info-box .remove:hover,
+.basket-info-box .add:hover {
+  box-shadow: 0 4px 10px rgba(92, 70, 48, 0.15);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 450px) {
+  .basket-frame {
+    width: calc(100vw - 24px);
+  }
+
+  .basket-frame .orders-main-wrapper {
+    height: 320px;
+  }
+
+  .basket-info-box .product-name {
+    width: 120px;
+    font-size: 14px;
+  }
+
+  .basket-info-box .product-price {
+    width: 65px;
+    font-size: 12px;
+  }
+}
+
+/* .basket-frame {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -274,7 +538,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
+  width: 95%;
   height: auto;
   margin-top: 6px;
 }
@@ -374,6 +638,6 @@
   overflow: hidden;
   flex-direction: column;
   width: 100%;
-  height: 260px;
+  height: 320px;
   margin-top: 10px;
-}
+} */

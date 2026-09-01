@@ -76,117 +76,537 @@ export default function Basket(props: BasketProps) {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
+        sx={{
+          transition: "all 0.2s ease",
+          "&:hover": {
+            transform: "translateY(-2px)",
+          },
+        }}
       >
-        {/* ==== auto badge count ==== */}
-        <Badge badgeContent={cartItems.length} color="secondary">
-          <img src={"/icons/shopping-cart.svg"} />
+        <Badge
+          badgeContent={cartItems.length}
+          sx={{
+            "& .MuiBadge-badge": {
+              backgroundColor: "#8B6F47",
+              color: "#fff",
+              fontWeight: 700,
+              minWidth: 19,
+              height: 19,
+              fontSize: "11px",
+            },
+          }}
+        >
+          <img
+            src={"/icons/shopping-cart.svg"}
+            style={{
+              width: "25px",
+              height: "25px",
+            }}
+          />
         </Badge>
       </IconButton>
+
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
         open={open}
         onClose={handleClose}
-        // onClick={handleClose}
         PaperProps={{
           elevation: 0,
           sx: {
-            overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+            overflow: "hidden",
+
+            width: "450px",
+            maxWidth: "calc(100vw - 24px)",
+
+            maxHeight: "650px",
+
+            backgroundColor: "#F5EFE6",
+
+            borderRadius: "18px",
+
+            boxShadow: "0 10px 30px rgba(92, 70, 48, 0.18)",
+
             mt: 1.5,
-            "& .MuiAvatar-root": {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
+
             "&:before": {
               content: '""',
               display: "block",
               position: "absolute",
+
               top: 0,
               right: 14,
+
               width: 10,
               height: 10,
-              bgcolor: "background.paper",
+
+              backgroundColor: "#F5EFE6",
+
               transform: "translateY(-50%) rotate(45deg)",
+
               zIndex: 0,
             },
           },
         }}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        transformOrigin={{
+          horizontal: "right",
+          vertical: "top",
+        }}
+        anchorOrigin={{
+          horizontal: "right",
+          vertical: "bottom",
+        }}
       >
-        <Stack className={"basket-frame"}>
-          <Box className={"all-check-box"}>
+        <Stack
+          className={"basket-frame"}
+          sx={{
+            width: "98%",
+            backgroundColor: "#F5EFE6",
+            color: "#3E342A",
+          }}
+        >
+          {/* CART HEADER */}
+          <Box
+            className={"all-check-box"}
+            sx={{
+              padding: "17px 20px",
+              backgroundColor: "#FFFDF9",
+              borderBottom: "1px solid #E4D8C8",
+              color: "#5C4630",
+              fontSize: "16px",
+              fontWeight: 700,
+            }}
+          >
             {cartItems.length === 0 ? (
-              <div>Cart is empty!</div>
+              <Box
+                sx={{
+                  textAlign: "center",
+                  color: "#8B6F47",
+                }}
+              >
+                Cart is empty!
+              </Box>
             ) : (
-              <Stack flexDirection={"row"}>
-                <div>Cart Products!</div>
+              <Stack
+                direction={"row"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+              >
+                <Box>Delete all ORDERS</Box>
+
                 <DeleteSweepIcon
-                  sx={{ ml: "5px", cursor: "pointer" }}
-                  color={"primary"}
+                  sx={{
+                    marginLeft: "10px",
+                    cursor: "pointer",
+                    color: "#8B6F47",
+                    transition: "all 0.2s ease",
+                    "&:hover": {
+                      color: "#5C4630",
+                      transform: "scale(1.1)",
+                    },
+                  }}
                   onClick={() => onDeleteAll()}
                 />
               </Stack>
             )}
           </Box>
 
-          <Box className={"orders-main-wrapper"}>
-            <Box className={"orders-wrapper"}>
-              {/* ====== */}
+          {/* PRODUCTS */}
+          <Box
+            className={"orders-main-wrapper"}
+            sx={{
+              maxHeight: "310px",
+              minHeight: "120px",
+              overflowY: "auto",
+              padding: "14px",
+
+              "&::-webkit-scrollbar": {
+                width: "5px",
+              },
+
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "#C9B69E",
+                borderRadius: "10px",
+              },
+            }}
+          >
+            {/* here-- */}
+            <Box
+              className={"orders-wrapper"}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "9px",
+              }}
+            >
               {cartItems.map((item: CartItem) => {
                 const imagePath = `${serverApi}/${item.image}`;
+
                 return (
-                  <Box className={"basket-info-box"} key={item._id}>
-                    <div className={"cancel-btn"}>
+                  <Box
+                    className={"basket-info-box"}
+                    key={item._id}
+                    sx={{
+                      position: "relative",
+
+                      display: "grid",
+                      gridTemplateColumns: "58px 1fr auto",
+                      gridTemplateRows: "auto auto",
+
+                      alignItems: "center",
+
+                      gap: "3px 12px",
+
+                      padding: "11px",
+
+                      backgroundColor: "#FFFDF9",
+
+                      border: "1px solid #EADFD1",
+                      borderRadius: "14px",
+
+                      boxShadow: "0 3px 12px rgba(92, 70, 48, 0.08)",
+
+                      transition: "all 0.25s ease",
+
+                      "&:hover": {
+                        transform: "translateY(-2px)",
+                        borderColor: "#CDB99D",
+                        boxShadow: "0 8px 22px rgba(92, 70, 48, 0.14)",
+                      },
+                    }}
+                  >
+                    {/* DELETE */}
+                    <Box
+                      className={"cancel-btn"}
+                      sx={{
+                        position: "absolute",
+                        top: "15px",
+                        right: "8px",
+                        zIndex: 2,
+                      }}
+                    >
                       <CancelIcon
                         onClick={() => onDelete(item)}
-                        color={"primary"}
+                        sx={{
+                          fontSize: "32px",
+                          color: "#A48A6C",
+                          cursor: "pointer",
+                          opacity: 0.65,
+
+                          transition: "all 0.2s ease",
+
+                          "&:hover": {
+                            color: "#6B4D32",
+                            opacity: 1,
+                            transform: "scale(1.12)",
+                          },
+                        }}
                       />
-                    </div>
-                    <img src={imagePath} className={"product-img"} />
-                    <span className={"product-name"}>{item.name}</span>
-                    <p className={"product-price"}>
+                    </Box>
+
+                    {/* IMAGE */}
+                    <img
+                      src={imagePath}
+                      className={"product-img"}
+                      style={{
+                        width: "58px",
+                        height: "58px",
+                        objectFit: "cover",
+                        borderRadius: "12px",
+                        backgroundColor: "#F1E8DC",
+                        border: "1px solid #EADFD1",
+                      }}
+                    />
+
+                    {/* NAME */}
+                    <Box
+                      className={"product-name"}
+                      sx={{
+                        minWidth: 0,
+                        paddingRight: "22px",
+
+                        fontSize: "14px",
+                        fontWeight: 700,
+
+                        color: "#4D3927",
+
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {item.name}
+                    </Box>
+
+                    {/* PRICE */}
+                    <Box
+                      className={"product-price"}
+                      sx={{
+                        margin: 0,
+                        fontSize: "13px",
+                        fontWeight: 600,
+                        color: "#8B6F47",
+                      }}
+                    >
                       {item.price} x {item.quantity}
-                    </p>
-                    <Box sx={{ minWidth: 120 }}>
-                      <div className="col-2">
+                    </Box>
+
+                    {/* QUANTITY */}
+                    <Box
+                      sx={{
+                        minWidth: 120,
+                      }}
+                    >
+                      <Box
+                        className="col-2"
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "5px",
+                        }}
+                      >
                         <button
                           onClick={() => onRemove(item)}
                           className="remove"
+                          style={{
+                            width: "28px",
+                            height: "28px",
+
+                            border: "none",
+                            borderRadius: "8px",
+
+                            backgroundColor: "#EEE4D7",
+                            color: "#6D5238",
+
+                            fontSize: "17px",
+                            fontWeight: 700,
+
+                            cursor: "pointer",
+
+                            transition: "all 0.2s ease",
+                          }}
                         >
                           -
-                        </button>{" "}
-                        <button onClick={() => onAdd(item)} className="add">
+                        </button>
+
+                        <button
+                          onClick={() => onAdd(item)}
+                          className="add"
+                          style={{
+                            width: "28px",
+                            height: "28px",
+
+                            border: "none",
+                            borderRadius: "8px",
+
+                            backgroundColor: "#8B6F47",
+                            color: "#FFFFFF",
+
+                            fontSize: "17px",
+                            fontWeight: 700,
+
+                            cursor: "pointer",
+
+                            transition: "all 0.2s ease",
+                          }}
+                        >
                           +
                         </button>
-                      </div>
+                      </Box>
                     </Box>
                   </Box>
                 );
               })}
             </Box>
           </Box>
+
+          {/* ORDER */}
           {cartItems.length !== 0 ? (
-            <Box className={"basket-order"}>
-              <span className={"price"}>
+            <Box
+              className={"basket-order"}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+
+                gap: "12px",
+
+                padding: "16px 18px",
+
+                backgroundColor: "#FFFDF9",
+
+                borderTop: "1px solid #E4D8C8",
+              }}
+            >
+              <Box
+                className={"price"}
+                sx={{
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  color: "#5C4630",
+                }}
+              >
                 Total: ${totalPrice} ({itemsPrice} + {shippingCost})
-              </span>
+              </Box>
+
               <Button
                 onClick={proceedOrderHandler}
                 startIcon={<ShoppingCartIcon />}
                 variant={"contained"}
+                sx={{
+                  minWidth: "95px",
+
+                  padding: "9px 15px",
+
+                  borderRadius: "10px",
+
+                  backgroundColor: "#8B6F47",
+                  color: "#FFFFFF",
+
+                  fontSize: "14px",
+                  fontWeight: 700,
+
+                  textTransform: "none",
+
+                  boxShadow: "0 3px 8px rgba(92, 70, 48, 0.12)",
+
+                  "&:hover": {
+                    backgroundColor: "#6F5638",
+
+                    transform: "translateY(-2px)",
+
+                    boxShadow: "0 7px 16px rgba(92, 70, 48, 0.20)",
+                  },
+                }}
               >
                 Order
               </Button>
             </Box>
-          ) : (
-            ""
-          )}
+          ) : null}
         </Stack>
       </Menu>
     </Box>
   );
+  // return (
+  //   <Box className={"hover-line"}>
+  //     <IconButton
+  //       aria-label="cart"
+  //       id="basic-button"
+  //       aria-controls={open ? "basic-menu" : undefined}
+  //       aria-haspopup="true"
+  //       aria-expanded={open ? "true" : undefined}
+  //       onClick={handleClick}
+  //     >
+  //       {/* ==== auto badge count ==== */}
+  //       <Badge badgeContent={cartItems.length} color="secondary">
+  //         <img src={"/icons/shopping-cart.svg"} />
+  //       </Badge>
+  //     </IconButton>
+  //     <Menu
+  //       anchorEl={anchorEl}
+  //       id="account-menu"
+  //       open={open}
+  //       onClose={handleClose}
+  //       // onClick={handleClose}
+  //       PaperProps={{
+  //         elevation: 0,
+  //         sx: {
+  //           overflow: "visible",
+  //           filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+  //           mt: 1.5,
+  //           "& .MuiAvatar-root": {
+  //             width: 32,
+  //             height: 32,
+  //             ml: -0.5,
+  //             mr: 1,
+  //           },
+  //           "&:before": {
+  //             content: '""',
+  //             display: "block",
+  //             position: "absolute",
+  //             top: 0,
+  //             right: 14,
+  //             width: 10,
+  //             height: 10,
+  //             bgcolor: "background.paper",
+  //             transform: "translateY(-50%) rotate(45deg)",
+  //             zIndex: 0,
+  //           },
+  //         },
+  //       }}
+  //       transformOrigin={{ horizontal: "right", vertical: "top" }}
+  //       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+  //     >
+  //       <Stack className={"basket-frame"}>
+  //         <Box className={"all-check-box"}>
+  //           {cartItems.length === 0 ? (
+  //             <div>Cart is empty!</div>
+  //           ) : (
+  //             <Stack flexDirection={"row"}>
+  //               <div>Cart Products</div>
+  //               <DeleteSweepIcon
+  //                 sx={{ ml: "5px", cursor: "pointer" }}
+  //                 color={"primary"}
+  //                 onClick={() => onDeleteAll()}
+  //               />
+  //             </Stack>
+  //           )}
+  //         </Box>
+
+  //         <Box className={"orders-main-wrapper"}>
+  //           <Box className={"orders-wrapper"}>
+  //             {/* ====== */}
+  //             {cartItems.map((item: CartItem) => {
+  //               const imagePath = `${serverApi}/${item.image}`;
+  //               return (
+  //                 <Box className={"basket-info-box"} key={item._id}>
+  //                   <div className={"cancel-btn"}>
+  //                     <CancelIcon
+  //                       onClick={() => onDelete(item)}
+  //                       color={"primary"}
+  //                     />
+  //                   </div>
+  //                   <img src={imagePath} className={"product-img"} />
+  //                   <span className={"product-name"}>{item.name}</span>
+  //                   <p className={"product-price"}>
+  //                     {item.price} x {item.quantity}
+  //                   </p>
+  //                   <Box sx={{ minWidth: 120 }}>
+  //                     <div className="col-2">
+  //                       <button
+  //                         onClick={() => onRemove(item)}
+  //                         className="remove"
+  //                       >
+  //                         -
+  //                       </button>{" "}
+  //                       <button onClick={() => onAdd(item)} className="add">
+  //                         +
+  //                       </button>
+  //                     </div>
+  //                   </Box>
+  //                 </Box>
+  //               );
+  //             })}
+  //           </Box>
+  //         </Box>
+  //         {cartItems.length !== 0 ? (
+  //           <Box className={"basket-order"}>
+  //             <span className={"price"}>
+  //               Total: ${totalPrice} ({itemsPrice} + {shippingCost})
+  //             </span>
+  //             <Button
+  //               onClick={proceedOrderHandler}
+  //               startIcon={<ShoppingCartIcon />}
+  //               variant={"contained"}
+  //             >
+  //               Order
+  //             </Button>
+  //           </Box>
+  //         ) : (
+  //           ""
+  //         )}
+  //       </Stack>
+  //     </Menu>
+  //   </Box>
+  // );
 }

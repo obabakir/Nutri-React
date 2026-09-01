@@ -11,8 +11,11 @@ import Events from "./Events";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
-import { setNewDishes, setPopularDishes, /*setTestGroup*/ 
-setTopUsers} from "./slice";
+import {
+  setNewDishes,
+  setPopularDishes /*setTestGroup*/,
+  setTopUsers,
+} from "./slice";
 import { retrievePopularDishes } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { ProductService } from "../../services/ProductService"; // or the correct path to ProductService
@@ -25,7 +28,7 @@ import { Member } from "../../../lib/types/member";
 const actionDispatch = (dispatch: Dispatch) => ({
   setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
   setNewDishes: (data: Product[]) => dispatch(setNewDishes(data)),
-  setTopUsers:( data: Member[]) => dispatch(setTopUsers(data)),
+  setTopUsers: (data: Member[]) => dispatch(setTopUsers(data)),
   /*
   eshmat: (data: Product[]) => dispatch(setTestGroup(data)),
   */
@@ -39,7 +42,8 @@ const actionDispatch = (dispatch: Dispatch) => ({
 ); */
 
 export default function HomePage() {
-  const { setPopularDishes, setNewDishes, setTopUsers } = actionDispatch(useDispatch());
+  const { setPopularDishes, setNewDishes, setTopUsers } =
+    actionDispatch(useDispatch());
 
   /*
   const { eshmat } = useSelector(TestGroupRetriever);  
@@ -55,7 +59,7 @@ export default function HomePage() {
         page: 1,
         limit: 4,
         order: "productViews",
-        productCollection: ProductCollection.DISH,
+        productCollection: ProductCollection.SUPPLEMENT,
       })
       .then((data) => {
         setPopularDishes(data);
@@ -67,7 +71,7 @@ export default function HomePage() {
         page: 1,
         limit: 4,
         order: "createdAt",
-        // productCollection: ProductCollection.DISH,
+        // productCollection: ProductCollection.PROTEIN,
         // commit qilganimiz un eng ohirgi qoshilgan orderlarni olib beradi
       })
       .then((data) => {
@@ -75,12 +79,11 @@ export default function HomePage() {
       })
       .catch((err) => console.log("Error:", err));
 
-      const member = new MemberService();
-      member
+    const member = new MemberService();
+    member
       .getTopUsers()
-      .then((data )=> setTopUsers(data))
-      .catch(err  => console.log(err));
-
+      .then((data) => setTopUsers(data))
+      .catch((err) => console.log(err));
 
     // Slice: Date => Store
   }, []);

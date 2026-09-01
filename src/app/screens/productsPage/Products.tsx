@@ -46,7 +46,7 @@ export default function Products(props: ProductsProps) {
     page: 1,
     limit: 8,
     order: "createdAt",
-    productCollection: ProductCollection.DISH,
+    productCollection: ProductCollection.SUPPLEMENT,
     search: "",
   });
 
@@ -197,54 +197,57 @@ export default function Products(props: ProductsProps) {
                   variant={"contained"}
                   color={
                     productSearch.productCollection ===
-                    ProductCollection.DESSERT
+                    ProductCollection.VITAMIN
                       ? "primary"
                       : "secondary"
                   }
                   onClick={() => {
-                    searchCollectionHandler(ProductCollection.DESSERT);
+                    searchCollectionHandler(ProductCollection.VITAMIN);
                   }}
                 >
-                  Dessert
+                  VITAMIN
                 </Button>
                 <Button
                   variant={"contained"}
                   color={
-                    productSearch.productCollection === ProductCollection.DRINK
+                    productSearch.productCollection ===
+                    ProductCollection.MINERAL
                       ? "primary"
                       : "secondary"
                   }
                   onClick={() => {
-                    searchCollectionHandler(ProductCollection.DRINK);
+                    searchCollectionHandler(ProductCollection.MINERAL);
                   }}
                 >
-                  Drink
+                  MINERAL
                 </Button>
                 <Button
                   variant={"contained"}
                   color={
-                    productSearch.productCollection === ProductCollection.SALAD
+                    productSearch.productCollection ===
+                    ProductCollection.PROTEIN
                       ? "primary"
                       : "secondary"
                   }
                   onClick={() => {
-                    searchCollectionHandler(ProductCollection.SALAD);
+                    searchCollectionHandler(ProductCollection.PROTEIN);
                   }}
                 >
-                  Salad
+                  PROTEIN
                 </Button>
                 <Button
                   variant={"contained"}
                   color={
-                    productSearch.productCollection === ProductCollection.DISH
+                    productSearch.productCollection ===
+                    ProductCollection.SUPPLEMENT
                       ? "primary"
                       : "secondary"
                   }
                   onClick={() => {
-                    searchCollectionHandler(ProductCollection.DISH);
+                    searchCollectionHandler(ProductCollection.SUPPLEMENT);
                   }}
                 >
-                  Dish
+                  SUPPLEMENT
                 </Button>
               </div>
             </Stack>
@@ -253,10 +256,7 @@ export default function Products(props: ProductsProps) {
               {products.length !== 0 ? (
                 products.map((product: Product) => {
                   const imagePath = `${serverApi}/${product.productImages[0]}`;
-                  const sizeVolume =
-                    product.productCollection === ProductCollection.DRINK
-                      ? product.productVolume + "litre"
-                      : product.productSize + "size";
+                  const sizeVolume = product.productLeftCount + " left";
                   return (
                     <Stack
                       key={product._id}

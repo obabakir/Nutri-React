@@ -78,9 +78,14 @@ export function Settings() {
   // === image upload uchun ===
   const handleImageViewer = (e: T) => {
     const file = e.target.files[0];
-    console.log("file/imga download =>", file);
+    console.log("file/img download =>", file);
     const fileType = file.type;
-    const validateImageType = ["image/png", "image/jpeg", "image/jpg"];
+    const validateImageType = [
+      "image/png",
+      "image/jpeg",
+      "image/jpg",
+      "image/webp",
+    ];
     if (!validateImageType.includes(fileType)) {
       sweetErrorHandling(Messages.error5).then();
     } else {
@@ -97,9 +102,23 @@ export function Settings() {
         <img src={memberImage} alt="" className={"mb-image"} />
         <div className={"media-change-box"}>
           <span>Upload image</span>
-          <p>JPG, JPEG, PNG formats only!</p>
+          <p>JPG, JPEG, PNG, WEBP formats only!</p>
           <div className={"up-del-box"}>
-            <Button component="label" onChange={handleImageViewer}>
+            <Button
+              component="label"
+              onChange={handleImageViewer}
+              sx={{
+                width: "45px",
+                height: "45px",
+                minWidth: "45px",
+                borderRadius: "12px",
+                color: "#355b43",
+                background: "#f5efe6",
+                "&:hover": {
+                  background: "#ebe1d4",
+                },
+              }}
+            >
               <CloudDownloadIcon />
               <input type="file" hidden />
             </Button>

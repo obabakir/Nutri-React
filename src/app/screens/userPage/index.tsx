@@ -24,6 +24,7 @@ export default function UserPage() {
             <Box display={"flex"} flexDirection={"column"}>
               <Box className={"menu-name"}>Modify Member Details</Box>
               <Box className={"menu-content"}>
+                {/* HERE CONNECTION => SETTINGS */}
                 <Settings />
               </Box>
             </Box>
@@ -48,8 +49,8 @@ export default function UserPage() {
                   <div className={"order-user-icon-box"}>
                     <img
                       src={
-                        authMember?.memberType === MemberType.RESTAURANT
-                          ? "/icons/restaurant.svg"
+                        authMember?.memberType === MemberType.ADMIN
+                          ? "/icons/Admin-svg.jpeg"
                           : "/icons/user-badge.svg"
                       }
                     />

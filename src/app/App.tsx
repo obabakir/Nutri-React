@@ -11,7 +11,7 @@ import HomeNavbar from "./components/headers/HomeNavbar";
 import OtherNavbar from "./components/headers/OtherNavbar";
 
 import HelpPage from "./screens/helpPage";
-import Test from "./screens/Testing";
+// import Test from "./screens/Testing";
 import { CartItem } from "../lib/types/search";
 import useBasket from "./hooks/useBasket";
 import AuthenticationModal from "./components/auth";
