@@ -9,6 +9,17 @@ import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
+// ------
+import Avatar from "@mui/joy/Avatar";
+import AvatarGroup from "@mui/joy/AvatarGroup";
+import JoyButton from "@mui/joy/Button";
+import Card from "@mui/joy/Card";
+import CardContent from "@mui/joy/CardContent";
+import CardActions from "@mui/joy/CardActions";
+import IconButton from "@mui/joy/IconButton";
+import Typography from "@mui/joy/Typography";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+// -------
 // ========
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
@@ -351,8 +362,61 @@ export default function Products(props: ProductsProps) {
 
       <div className={"brands-logo"}>
         <Container className={"family-brands"}>
-          <Box className={"category-title"}>Our Family Brands</Box>
+          <Box className={"category-title"}>
+            Get Professional Advise before You Buy
+          </Box>
           <Stack className={"brand-list"}>
+            {/* ===== */}
+            {/* <Card
+              variant="outlined"
+              sx={{
+                width: 320,
+                // to make the card resizable
+                overflow: "auto",
+                resize: "horizontal",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Avatar src="/static/images/avatar/1.jpg" size="lg" />
+                <AvatarGroup size="sm" sx={{ "--Avatar-size": "28px" }}>
+                  <Avatar src="/static/images/avatar/2.jpg" />
+                  <Avatar src="/static/images/avatar/3.jpg" />
+                  <Avatar src="/static/images/avatar/4.jpg" />
+                  <Avatar>+4K</Avatar>
+                </AvatarGroup>
+              </Box>
+              <CardContent>
+                <Typography level="title-lg">NYC Coders</Typography>
+                <Typography level="body-sm">
+                  We are a community of developers prepping for coding
+                  interviews, participate, chat with others and get better at
+                  interviewing.
+                </Typography>
+              </CardContent>
+              <CardActions buttonFlex="0 1 120px">
+                <IconButton
+                  variant="outlined"
+                  color="neutral"
+                  sx={{ mr: "auto" }}
+                >
+                  <FavoriteBorder />
+                </IconButton>
+                <JoyButton variant="outlined" color="neutral">
+                  View
+                </JoyButton>
+                <JoyButton variant="solid" color="primary">
+                  Join
+                </JoyButton>
+              </CardActions>
+            </Card> */}
+
+            {/* ===== */}
             <Box className={"review-box"}>
               <img src={"/img/gurme.webp"} />
             </Box>
@@ -372,17 +436,21 @@ export default function Products(props: ProductsProps) {
       <div className={"address"}>
         <Container>
           <Stack className={"address-area"}>
-            <Box className={"title"}>Our address</Box>
+            <Box className={"title"}>Business Address</Box>
+
             <iframe
-              style={{ marginTop: "60px" }}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96326.03685561026!2d28.92022666528895!3d41.02112846139867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab82bea99445f%3A0x6ed7f4baceb4476c!2sMaiden&#39;s%20Tower!5e0!3m2!1sen!2skr!4v1757106097524!5m2!1sen!2skr"
+              style={{ marginTop: "60px", border: 0 }}
+              src="https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x357b1becc9c2e76b%3A0xef5070f27a3d85c6!2s201%ED%98%B8%2C%2017-10%20Yeosul%203-gil%2C%20Poseung-eup%2C%20Pyeongtaek%2C%20Gyeonggi-do!5e0!3m2!1sen!2skr!4v1788318323394!5m2!1sen!2skr"
               width="1320"
               height="500"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
           </Stack>
         </Container>
       </div>
     </div>
   );
 }
+//
