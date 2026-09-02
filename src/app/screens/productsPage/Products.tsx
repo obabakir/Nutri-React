@@ -10,6 +10,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 // ------
+import { CssVarsProvider } from "@mui/joy/styles";
 import Avatar from "@mui/joy/Avatar";
 import AvatarGroup from "@mui/joy/AvatarGroup";
 import JoyButton from "@mui/joy/Button";
@@ -114,15 +115,20 @@ export default function Products(props: ProductsProps) {
     <div className={"products"}>
       <Container>
         <Stack flexDirection={"column"} alignItems={"center"}>
-          <Stack className={"avatar-big-box"}>
-            <Stack className={"top-text"}>
-              <p>Bumarak Restaurant</p>
+          {/* =====================================================
+        TOP CONTROL BOX
+    ====================================================== */}
+          <Stack className={"products-control-box"}>
+            {/* TITLE + SEARCH */}
+            <Stack className={"products-control-top"}>
+              <Box className={"products-page-title"}>Online Nutrition Shop</Box>
+
               <Stack className={"single-search-big-box"}>
                 <input
                   type={"search"}
                   className={"single-search-input"}
                   name={"singleResearch"}
-                  placeholder={"Type here"}
+                  placeholder={"Search products..."}
                   value={searchText}
                   onChange={(e) => {
                     setSearchText(e.target.value);
@@ -131,6 +137,7 @@ export default function Products(props: ProductsProps) {
                     if (e.key === "Enter") searchProductHandler();
                   }}
                 />
+
                 <Button
                   className={"single-button-search"}
                   variant="contained"
@@ -141,10 +148,88 @@ export default function Products(props: ProductsProps) {
                 </Button>
               </Stack>
             </Stack>
-          </Stack>
 
-          <Stack className={"dishes-filter-section"}>
+            {/* =====================================================
+          CATEGORY BUTTONS
+      ====================================================== */}
+            <Stack className={"product-category"}>
+              <Box>🏷️ Category</Box>
+              <Button
+                variant={"contained"}
+                color={
+                  productSearch.productCollection ===
+                  ProductCollection.SUPPLEMENT
+                    ? "primary"
+                    : "secondary"
+                }
+                onClick={() => {
+                  searchCollectionHandler(ProductCollection.SUPPLEMENT);
+                }}
+              >
+                SUPPLEMENT
+              </Button>
+              <Button
+                variant={"contained"}
+                color={
+                  productSearch.productCollection === ProductCollection.PROTEIN
+                    ? "primary"
+                    : "secondary"
+                }
+                onClick={() => {
+                  searchCollectionHandler(ProductCollection.PROTEIN);
+                }}
+              >
+                PROTEIN
+              </Button>
+
+              <Button
+                variant={"contained"}
+                color={
+                  productSearch.productCollection === ProductCollection.VITAMIN
+                    ? "primary"
+                    : "secondary"
+                }
+                onClick={() => {
+                  searchCollectionHandler(ProductCollection.VITAMIN);
+                }}
+              >
+                VITAMIN
+              </Button>
+
+              <Button
+                variant={"contained"}
+                color={
+                  productSearch.productCollection === ProductCollection.MINERAL
+                    ? "primary"
+                    : "secondary"
+                }
+                onClick={() => {
+                  searchCollectionHandler(ProductCollection.MINERAL);
+                }}
+              >
+                MINERAL
+              </Button>
+
+              <Button
+                variant={"contained"}
+                color={
+                  productSearch.productCollection === ProductCollection.OTHER
+                    ? "primary"
+                    : "secondary"
+                }
+                onClick={() => {
+                  searchCollectionHandler(ProductCollection.OTHER);
+                }}
+              >
+                OTHER
+              </Button>
+            </Stack>
+
+            {/* =====================================================
+          SORT BUTTONS
+      ====================================================== */}
             <Stack className={"dishes-filter-box"}>
+              <Box>↕️ Sort by</Box>
               <Button
                 variant={"contained"}
                 className={"order"}
@@ -157,6 +242,7 @@ export default function Products(props: ProductsProps) {
               >
                 New
               </Button>
+
               <Button
                 variant={"contained"}
                 className={"order"}
@@ -171,6 +257,7 @@ export default function Products(props: ProductsProps) {
               >
                 Price
               </Button>
+
               <Button
                 variant={"contained"}
                 className={"order"}
@@ -188,154 +275,94 @@ export default function Products(props: ProductsProps) {
             </Stack>
           </Stack>
 
-          <Stack className={"list-category-section"}>
-            <Stack className={"product-category"}>
-              <div className={"category-main"}>
-                <Button
-                  variant={"contained"}
-                  color={
-                    productSearch.productCollection === ProductCollection.OTHER
-                      ? "primary"
-                      : "secondary"
-                  }
-                  onClick={() => {
-                    searchCollectionHandler(ProductCollection.OTHER);
-                  }}
-                >
-                  Other
-                </Button>
-                <Button
-                  variant={"contained"}
-                  color={
-                    productSearch.productCollection ===
-                    ProductCollection.VITAMIN
-                      ? "primary"
-                      : "secondary"
-                  }
-                  onClick={() => {
-                    searchCollectionHandler(ProductCollection.VITAMIN);
-                  }}
-                >
-                  VITAMIN
-                </Button>
-                <Button
-                  variant={"contained"}
-                  color={
-                    productSearch.productCollection ===
-                    ProductCollection.MINERAL
-                      ? "primary"
-                      : "secondary"
-                  }
-                  onClick={() => {
-                    searchCollectionHandler(ProductCollection.MINERAL);
-                  }}
-                >
-                  MINERAL
-                </Button>
-                <Button
-                  variant={"contained"}
-                  color={
-                    productSearch.productCollection ===
-                    ProductCollection.PROTEIN
-                      ? "primary"
-                      : "secondary"
-                  }
-                  onClick={() => {
-                    searchCollectionHandler(ProductCollection.PROTEIN);
-                  }}
-                >
-                  PROTEIN
-                </Button>
-                <Button
-                  variant={"contained"}
-                  color={
-                    productSearch.productCollection ===
-                    ProductCollection.SUPPLEMENT
-                      ? "primary"
-                      : "secondary"
-                  }
-                  onClick={() => {
-                    searchCollectionHandler(ProductCollection.SUPPLEMENT);
-                  }}
-                >
-                  SUPPLEMENT
-                </Button>
-              </div>
-            </Stack>
+          {/* =====================================================
+        PRODUCTS
+    ====================================================== */}
+          <Stack className={"product-wrapper"}>
+            {products.length !== 0 ? (
+              products.map((product: Product) => {
+                const imagePath = `${serverApi}/${product.productImages[0]}`;
+                const sizeVolume = product.productLeftCount + " left";
 
-            <Stack className={"product-wrapper"}>
-              {products.length !== 0 ? (
-                products.map((product: Product) => {
-                  const imagePath = `${serverApi}/${product.productImages[0]}`;
-                  const sizeVolume = product.productLeftCount + " left";
-                  return (
+                return (
+                  <Stack
+                    key={product._id}
+                    className={"product-card"}
+                    onClick={() => {
+                      chooseDishHandler(product._id);
+                    }}
+                  >
                     <Stack
-                      key={product._id}
-                      className={"product-card"}
-                      onClick={() => {
-                        chooseDishHandler(product._id);
+                      className={"product-img"}
+                      sx={{
+                        backgroundImage: `url(${imagePath})`,
                       }}
                     >
-                      <Stack
-                        className={"product-img"}
-                        sx={{ backgroundImage: `url(${imagePath})` }}
+                      <div className={"product-sale"}>{sizeVolume}</div>
+
+                      {/* ADD TO CART */}
+                      <Button
+                        className={"shop-btn"}
+                        onClick={(e) => {
+                          console.log(
+                            "BUTTON PRESSED AND STOPPROPAGATION STARTED",
+                          );
+
+                          onAdd({
+                            _id: product._id,
+                            quantity: 1,
+                            name: product.productName,
+                            price: product.productPrice,
+                            image: product.productImages[0],
+                          });
+
+                          e.stopPropagation();
+                        }}
                       >
-                        <div className={"product-sale"}>{sizeVolume}</div>
-                        <Button
-                          className={"shop-btn"}
-                          // ===== ====
-                          onClick={(e) => {
-                            console.log(
-                              "BUTTON PRESSED AND STOPPROPAGATION STARTED",
-                            );
-                            onAdd({
-                              _id: product._id,
-                              quantity: 1,
-                              name: product.productName,
-                              price: product.productPrice,
-                              image: product.productImages[0],
-                              /** rasmning 1- sini yani nolinchi indexini aftamatik olamiz**/
-                            });
-                            e.stopPropagation();
-                          }}
+                        <img
+                          src={"/icons/shopping-cart.svg"}
+                          style={{ display: "flex" }}
+                        />
+                      </Button>
+
+                      {/* VIEWS */}
+                      <Button className={"view-btn"} sx={{ right: "36px" }}>
+                        <Badge
+                          badgeContent={product.productViews}
+                          color="secondary"
                         >
-                          <img
-                            src={"/icons/shopping-cart.svg"}
-                            style={{ display: "flex" }}
+                          <RemoveRedEyeIcon
+                            sx={{
+                              color:
+                                product.productViews === 0 ? "gray" : "white",
+                            }}
                           />
-                        </Button>
-                        <Button className={"view-btn"} sx={{ right: "36px" }}>
-                          <Badge
-                            badgeContent={product.productViews}
-                            color="secondary"
-                          >
-                            <RemoveRedEyeIcon
-                              sx={{
-                                color:
-                                  product.productViews === 0 ? "gray" : "white",
-                              }}
-                            />
-                          </Badge>
-                        </Button>
-                      </Stack>
-                      <Box className={"product-desc"}>
-                        <span className={"product-title"}>
-                          {product.productName}
-                        </span>
-                        <div className={"product-desc"}>
-                          <MonetizationOnIcon />
-                          {product.productPrice}
-                        </div>
-                      </Box>
+                        </Badge>
+                      </Button>
                     </Stack>
-                  );
-                })
-              ) : (
-                <Box className="no-data">Products are not available!</Box>
-              )}
-            </Stack>
+
+                    {/* PRODUCT INFO */}
+                    <Box className={"product-desc"}>
+                      <span className={"product-title"}>
+                        {product.productName}
+                      </span>
+
+                      <div className={"product-desc"}>
+                        <MonetizationOnIcon />
+                        {product.productPrice}
+                      </div>
+                    </Box>
+                  </Stack>
+                );
+              })
+            ) : (
+              <Box className="no-data">Products are not available!</Box>
+            )}
           </Stack>
 
+          {/* =====================================================
+        PAGINATION
+    ====================================================== */}
           <Stack className={"pagination-section"}>
             <Pagination
               count={
@@ -363,72 +390,195 @@ export default function Products(props: ProductsProps) {
       <div className={"brands-logo"}>
         <Container className={"family-brands"}>
           <Box className={"category-title"}>
-            Get Professional Advise before You Buy
+            Get Professional Advice before You Buy
           </Box>
-          <Stack className={"brand-list"}>
-            {/* ===== */}
-            {/* <Card
-              variant="outlined"
-              sx={{
-                width: 320,
-                // to make the card resizable
-                overflow: "auto",
-                resize: "horizontal",
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <Avatar src="/static/images/avatar/1.jpg" size="lg" />
-                <AvatarGroup size="sm" sx={{ "--Avatar-size": "28px" }}>
-                  <Avatar src="/static/images/avatar/2.jpg" />
-                  <Avatar src="/static/images/avatar/3.jpg" />
-                  <Avatar src="/static/images/avatar/4.jpg" />
-                  <Avatar>+4K</Avatar>
-                </AvatarGroup>
-              </Box>
-              <CardContent>
-                <Typography level="title-lg">NYC Coders</Typography>
-                <Typography level="body-sm">
-                  We are a community of developers prepping for coding
-                  interviews, participate, chat with others and get better at
-                  interviewing.
-                </Typography>
-              </CardContent>
-              <CardActions buttonFlex="0 1 120px">
-                <IconButton
-                  variant="outlined"
-                  color="neutral"
-                  sx={{ mr: "auto" }}
-                >
-                  <FavoriteBorder />
-                </IconButton>
-                <JoyButton variant="outlined" color="neutral">
-                  View
-                </JoyButton>
-                <JoyButton variant="solid" color="primary">
-                  Join
-                </JoyButton>
-              </CardActions>
-            </Card> */}
 
-            {/* ===== */}
-            <Box className={"review-box"}>
-              <img src={"/img/gurme.webp"} />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/seafood.webp"} />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/doner.webp"} />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/sweets.webp"} />
-            </Box>
+          <Stack className={"brand-list"}>
+            <CssVarsProvider>
+              {/* Advisor 1 */}
+              <Card variant="outlined" className={"advisor-card"}>
+                <Box className={"advisor-card-top"}>
+                  <Avatar src="/img/advisor-female.jpg" size="lg" />
+
+                  <AvatarGroup size="sm" sx={{ "--Avatar-size": "28px" }}>
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar>+4K</Avatar>
+                  </AvatarGroup>
+                </Box>
+
+                <CardContent>
+                  <Typography level="title-lg" className={"advisor-card-title"}>
+                    Nutrition Advisor
+                  </Typography>
+
+                  <Typography
+                    level="body-sm"
+                    className={"advisor-card-description"}
+                  >
+                    Get personalized nutrition guidance and choose the right
+                    products for your daily health and nutrition needs.
+                  </Typography>
+                </CardContent>
+
+                <CardActions buttonFlex="0 1 120px">
+                  <IconButton
+                    variant="outlined"
+                    color="neutral"
+                    sx={{ mr: "auto" }}
+                  >
+                    <FavoriteBorder />
+                  </IconButton>
+
+                  <JoyButton variant="outlined" color="neutral">
+                    View
+                  </JoyButton>
+
+                  <JoyButton variant="solid" color="primary">
+                    Consult
+                  </JoyButton>
+                </CardActions>
+              </Card>
+
+              {/* Advisor 2 */}
+              <Card variant="outlined" className={"advisor-card"}>
+                <Box className={"advisor-card-top"}>
+                  <Avatar src="/img/fitness-advisor.jpg" size="lg" />
+
+                  <AvatarGroup size="sm" sx={{ "--Avatar-size": "28px" }}>
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar>+3K</Avatar>
+                  </AvatarGroup>
+                </Box>
+
+                <CardContent>
+                  <Typography level="title-lg" className={"advisor-card-title"}>
+                    Fitness Advisor
+                  </Typography>
+
+                  <Typography
+                    level="body-sm"
+                    className={"advisor-card-description"}
+                  >
+                    Find the right protein, supplements, and nutrition products
+                    to support your workouts and fitness goals.
+                  </Typography>
+                </CardContent>
+
+                <CardActions buttonFlex="0 1 120px">
+                  <IconButton
+                    variant="outlined"
+                    color="neutral"
+                    sx={{ mr: "auto" }}
+                  >
+                    <FavoriteBorder />
+                  </IconButton>
+
+                  <JoyButton variant="outlined" color="neutral">
+                    View
+                  </JoyButton>
+
+                  <JoyButton variant="solid" color="primary">
+                    Consult
+                  </JoyButton>
+                </CardActions>
+              </Card>
+
+              {/* Advisor 3 */}
+              <Card variant="outlined" className={"advisor-card"}>
+                <Box className={"advisor-card-top"}>
+                  <Avatar src="/img/advisor-male.jpg" size="lg" />
+
+                  <AvatarGroup size="sm" sx={{ "--Avatar-size": "28px" }}>
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar>+5K</Avatar>
+                  </AvatarGroup>
+                </Box>
+
+                <CardContent>
+                  <Typography level="title-lg" className={"advisor-card-title"}>
+                    Supplement Advisor
+                  </Typography>
+
+                  <Typography
+                    level="body-sm"
+                    className={"advisor-card-description"}
+                  >
+                    Need help choosing vitamins, minerals, proteins, or other
+                    supplements? Get professional product recommendations.
+                  </Typography>
+                </CardContent>
+
+                <CardActions buttonFlex="0 1 120px">
+                  <IconButton
+                    variant="outlined"
+                    color="neutral"
+                    sx={{ mr: "auto" }}
+                  >
+                    <FavoriteBorder />
+                  </IconButton>
+
+                  <JoyButton variant="outlined" color="neutral">
+                    View
+                  </JoyButton>
+
+                  <JoyButton variant="solid" color="primary">
+                    Consult
+                  </JoyButton>
+                </CardActions>
+              </Card>
+
+              {/* Advisor 4 */}
+              <Card variant="outlined" className={"advisor-card"}>
+                <Box className={"advisor-card-top"}>
+                  <Avatar src="/img/wellness-advisor.jpg" size="lg" />
+
+                  <AvatarGroup size="sm" sx={{ "--Avatar-size": "28px" }}>
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar src="/icons/default-user.svg" />
+                    <Avatar>+6K</Avatar>
+                  </AvatarGroup>
+                </Box>
+
+                <CardContent>
+                  <Typography level="title-lg" className={"advisor-card-title"}>
+                    Wellness Advisor
+                  </Typography>
+
+                  <Typography
+                    level="body-sm"
+                    className={"advisor-card-description"}
+                  >
+                    Build a healthier daily routine with balanced nutrition and
+                    products selected for your personal wellness goals.
+                  </Typography>
+                </CardContent>
+
+                <CardActions buttonFlex="0 1 120px">
+                  <IconButton
+                    variant="outlined"
+                    color="neutral"
+                    sx={{ mr: "auto" }}
+                  >
+                    <FavoriteBorder />
+                  </IconButton>
+
+                  <JoyButton variant="outlined" color="neutral">
+                    View
+                  </JoyButton>
+
+                  <JoyButton variant="solid" color="primary">
+                    Consult
+                  </JoyButton>
+                </CardActions>
+              </Card>
+            </CssVarsProvider>
           </Stack>
         </Container>
       </div>
@@ -440,6 +590,7 @@ export default function Products(props: ProductsProps) {
 
             <iframe
               style={{ marginTop: "60px", border: 0 }}
+              title="Business Address"
               src="https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x357b1becc9c2e76b%3A0xef5070f27a3d85c6!2s201%ED%98%B8%2C%2017-10%20Yeosul%203-gil%2C%20Poseung-eup%2C%20Pyeongtaek%2C%20Gyeonggi-do!5e0!3m2!1sen!2skr!4v1788318323394!5m2!1sen!2skr"
               width="1320"
               height="500"

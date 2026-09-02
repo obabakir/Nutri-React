@@ -1,4 +1,5 @@
 .home-navbar {
+  position: relative;
   display: flex;
   width: 100%;
   height: 773px;
@@ -12,11 +13,15 @@
 }
 
 .home-navbar .navbar-container .menu {
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  width: 100%;
+  height: 80px;
+  background-color: #6d5238;
 }
 
 .home-navbar .navbar-container .menu .brand-logo {
@@ -157,15 +162,14 @@
   margin-top: 43px;
 }
 
-.home-navbar .navbar-container .logo-img {
+/* .home-navbar .navbar-container .logo-img {
   width: 100%;
   height: 100%;
-  background: url("/public/img/logo.webp");
+  background: url("/public/img/project-logo.png");
   background-size: contain;
   background-repeat: no-repeat;
   filter: invert(25%);
-}
-
+} */
 /* other-navbar */
 
 .other-navbar {

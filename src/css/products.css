@@ -6,141 +6,288 @@
 }
 
 /** Products **/
+/* =========================================================
+   PRODUCTS CONTROL BOX
+========================================================= */
 
-.products-page .products {
-  display: flex;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  background: #f8f8ff;
-}
-
-.products-page .products .avatar-big-box {
-  position: relative;
+.products-page .products .products-control-box {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
   width: 100%;
-  height: auto;
+  padding: 35px 45px 30px;
+  border: 1px solid #e5d4c1;
+  border-radius: 25px;
+  margin-top: 55px;
+  background: #f5efe6;
+  box-shadow: 0 8px 25px rgba(92, 70, 48, 0.12);
 }
 
-.products-page .products .top-text {
-  position: relative;
+/* =========================================================
+   TITLE + SEARCH
+========================================================= */
+
+.products-page .products .products-control-top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 43px;
-  margin-top: 80px;
 }
 
-.products-page .products .top-text p {
-  position: relative;
-  margin-left: 380px;
+.products-page .products .products-page-title {
   font-family: "Dancing Script";
   font-size: 36px;
   font-weight: 700;
-  font-style: normal;
   line-height: 43px;
-  color: #343434;
+  color: #6f5238;
 }
 
-.products-page .products .single-search-big-box {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  box-sizing: border-box;
-  width: 337px;
-  height: 33px;
-  border: 1px solid #f8f8ff;
-  border-radius: 18.5px;
-  background: #fffcfc;
-  box-shadow: 0px 4px 4px rgba(213, 213, 213, 0.25);
-}
+/* =========================================================
+   SEARCH
+========================================================= */
 
-.products-page .products .single-search-form {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.products-page .products .single-search-input {
-  position: relative;
-  display: flex;
-  width: 225px;
-  height: 30px;
-  padding-left: 10px;
-  border: none;
-  border-radius: 10px 0px 0px 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  font-family: "GT Walsheim Pro";
-  font-size: 15px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 26px;
-  color: #4f547b;
-}
-
-.products-page .products .single-button-search {
-  position: relative;
-  display: flex;
-  width: 100px;
-  height: 33px;
-  border-radius: 18px;
-  color: #d7b586;
-  background: #343434;
-}
-
-.products-page .products .prev-btn,
-.products .next-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 10%;
-  height: 147px;
-}
-
-.products-page .products .restaurant-avatars-wrapper {
+.products-page .products .products-control-box .single-search-big-box {
   display: flex;
   overflow: hidden;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  width: 90%;
-  height: 147px;
+  box-sizing: border-box;
+  width: 430px;
+  height: 50px;
+  border: 1px solid #d7b686;
+  border-radius: 25px;
+  background: #fffaf4;
+  box-shadow: 0 4px 12px rgba(92, 70, 48, 0.12);
 }
 
-.products-page .products .restaurant-avatars-wrapper .restaurant-avatars {
+.products-page .products .products-control-box .single-search-input {
+  flex: 1;
+  width: auto;
+  height: 48px;
+  padding: 0 15px;
+  border: none;
+  font-family: "DM Sans";
+  font-size: 15px;
+  color: #4f547b;
+  background: transparent;
+  outline: none;
+}
+
+.products-page .products .single-search-input::placeholder {
+  color: #a89b8d;
+}
+
+.products-page .products .products-control-box .single-button-search {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 108px;
-  height: 100%;
+  width: 125px;
+  height: 50px;
+  border-radius: 25px;
+  font-family: "Poppins";
+  font-size: 13px;
+  font-weight: 600;
+  color: #fffaf4;
+  background: #6f5238;
+  box-shadow: none;
 }
 
-.products-page .products .restaurant-avatars img {
-  width: 108px;
-  height: 108px;
-  border-radius: 50%;
+.products-page .products .single-button-search:hover {
+  background: #543d2a;
 }
 
-.products-page .products .restaurant-avatars span {
-  margin-top: 14px;
-  font-family: "Solway";
+/* =========================================================
+   CATEGORY BUTTONS
+========================================================= */
+
+.products-page .products .products-control-box .product-category {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.products-page .products .product-category button {
+  min-width: 125px;
+  height: 42px;
+  border: 1px solid #dfc9ab;
+  border-radius: 21px;
+  font-family: "Poppins";
   font-size: 12px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 14px;
-  color: #fffcfc;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #6f5238;
+  background: #f1e2cf;
+  box-shadow:
+    0 3px 8px rgba(92, 70, 48, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+  cursor: pointer;
 }
+
+/* =========================================================
+   CATEGORY HOVER
+========================================================= */
+
+.products-page .products .product-category button:hover {
+  color: #6f5238;
+  background: #e5cfb2;
+  box-shadow:
+    0 7px 15px rgba(92, 70, 48, 0.16),
+    inset 0 1px 2px rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   CATEGORY SELECTED / CLICKED
+========================================================= */
+
+.products-page .products .product-category button.MuiButton-containedPrimary {
+  border-color: #171614;
+  color: #0c0a07;
+  background: #d9bd91;
+  box-shadow:
+    0 7px 16px rgba(92, 70, 48, 0.19),
+    0 2px 4px rgba(92, 70, 48, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   SELECTED + HOVER
+========================================================= */
+
+.products-page
+  .products
+  .product-category
+  button.MuiButton-containedPrimary:hover {
+  color: #fffaf4;
+  background: #d9bd91;
+  box-shadow:
+    0 9px 20px rgba(92, 70, 48, 0.21),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   PRESS EFFECT
+========================================================= */
+
+.products-page .products .product-category button:active {
+  box-shadow:
+    0 3px 7px rgba(92, 70, 48, 0.14),
+    inset 0 2px 4px rgba(92, 70, 48, 0.08);
+  transform: translateY(1px);
+}
+
+/* =========================================================
+   SORT BUTTONS-----
+========================================================= */
+
+.products-page .products .products-control-box .dishes-filter-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  margin-top: 25px;
+}
+
+/* ---- */
+/* =========================================================
+   SORT BUTTONS
+========================================================= */
+
+.products-page .products .dishes-filter-box .order {
+  min-width: 90px;
+  height: 38px;
+  border: 1px solid #d7b686;
+  border-radius: 19px;
+  font-family: "Poppins";
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #6f5238;
+  background: #e8d6c0;
+  box-shadow:
+    0 3px 8px rgba(92, 70, 48, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+  cursor: pointer;
+}
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.products-page .products .dishes-filter-box .order:hover {
+  color: #fffaf4;
+  background: #d7b686;
+  box-shadow:
+    0 7px 15px rgba(92, 70, 48, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   SELECTED / CLICKED
+========================================================= */
+
+.products-page .products .dishes-filter-box .order.MuiButton-containedPrimary {
+  border-color: #161411;
+  color: #fffaf4;
+  background: #d7b686;
+  box-shadow:
+    0 7px 16px rgba(92, 70, 48, 0.24),
+    0 2px 4px rgba(92, 70, 48, 0.12),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   SELECTED + HOVER
+========================================================= */
+
+.products-page
+  .products
+  .dishes-filter-box
+  .order.MuiButton-containedPrimary:hover {
+  color: #fffaf4;
+  background: #d7b686;
+  box-shadow:
+    0 9px 20px rgba(92, 70, 48, 0.26),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   CLICK EFFECT
+========================================================= */
+
+.products-page .products .dishes-filter-box .order:active {
+  box-shadow:
+    0 3px 7px rgba(92, 70, 48, 0.18),
+    inset 0 2px 4px rgba(92, 70, 48, 0.12);
+  transform: translateY(1px);
+}
+
+/* =========================================================
+   PRODUCTS START BELOW CONTROL BOX
+========================================================= */
 
 .products-page .products .product-wrapper {
   display: flex;
@@ -148,7 +295,70 @@
   flex-wrap: wrap;
   width: 100%;
   height: auto;
+  margin-top: 20px;
   margin-left: 25px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .products-page .products .products-control-top {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .products-page .products .products-control-box .single-search-big-box {
+    width: 100%;
+    max-width: 430px;
+  }
+
+  .products-page .products .product-category {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .products-page .products .products-control-box {
+    padding: 25px 15px;
+  }
+
+  .products-page .products .products-page-title {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .products-page .products .product-category {
+    gap: 10px;
+  }
+
+  .products-page .products .product-category button {
+    min-width: 110px;
+  }
+}
+
+/* =====----- */
+/* =========================================================
+   PRODUCTS AREA
+========================================================= */
+
+.products-page .products .product-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 35px 30px 45px;
+  border: 1px solid #e5d4c1;
+  border-radius: 25px;
+  margin-top: 45px;
+  margin-left: 0;
+  background: #f5efe6;
+  box-shadow:
+    0 8px 25px rgba(92, 70, 48, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.45);
 }
 
 .products .product-wrapper .no-data {
@@ -171,8 +381,21 @@
   align-items: center;
   width: 270px;
   height: auto;
-  margin-top: 40px;
+  padding: 10px;
+  border-radius: 18px;
+  margin-top: 20px;
   margin-right: 24px;
+  margin-bottom: 20px;
+  background: #fffaf4;
+  box-shadow: 0 5px 15px rgba(92, 70, 48, 0.1);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.products-page .products .product-card:hover {
+  box-shadow: 0 12px 25px rgba(92, 70, 48, 0.18);
+  transform: translateY(-5px);
 }
 
 .products-page .products .product-card .product-img {
@@ -320,12 +543,16 @@
   margin-top: 30px;
 }
 
+/* ---------- */
+
 .products-page .products .brands-logo {
   display: flex;
   width: 100%;
-  height: 630px;
+  height: auto;
+  min-height: 630px;
+  padding-bottom: 60px;
   margin-top: 60px;
-  background-color: #0d1518;
+  background-color: #d7a760;
 }
 
 .products-page .products .brands-logo .family-brands {
@@ -335,91 +562,167 @@
   padding-top: 70px;
 }
 
-.products-page .products .brands-logo .family-brands .brand-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-}
-
 .products-page .products .brands-logo .category-title {
   font-family: "Dancing Script";
   font-size: 36px;
   font-weight: 700;
   font-style: normal;
   line-height: 43px;
-  color: #d7b686;
+  color: #6f5238;
 }
 
-.products-page .products .brands-logo .review-box {
+.products-page .products .brands-logo .brand-list {
   display: flex;
-  width: 260px;
-  height: 350px;
-  border-radius: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
   margin-top: 40px;
-  box-shadow: 0px -1px 13px 5px #bab2e3c4;
-  object-fit: fill;
 }
 
-.products-page .products .brands-logo .review-box img {
+/* =========================================================
+   ADVISOR CARD
+========================================================= */
+
+.products-page .products .brands-logo .advisor-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 260px;
+  min-height: 350px;
+  padding: 20px;
+  border: 1px solid #e5d4c1;
   border-radius: 20px;
+  background: #fffaf4;
+  box-shadow: 0px -1px 13px 5px rgba(186, 178, 227, 0.35);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.products-page .products .brands-logo .review-img {
-  width: 110px;
-  height: 110px;
-  border-radius: 37px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+.products-page .products .brands-logo .advisor-card:hover {
+  box-shadow: 0px 10px 25px rgba(92, 70, 48, 0.22);
+  transform: translateY(-7px);
 }
 
-.products-page .products .brands-logo .review-name {
-  margin-top: 10px;
-  font-family: "Commissioner";
-  font-size: 30px;
-  font-weight: 500;
-  font-style: normal;
-  line-height: 36px;
-  color: #08090d;
-}
+/* =========================================================
+   ADVISOR CARD TOP
+========================================================= */
 
-.products-page .products .brands-logo .review-stars {
+.products-page .products .brands-logo .advisor-card-top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 149px;
-  height: 24px;
-  margin-top: 10px;
+  width: 100%;
 }
 
-.products-page .products .brands-logo .review-prof {
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.products-page .products .brands-logo .advisor-card-top .MuiAvatar-root {
+  box-shadow: 0px 4px 10px rgba(92, 70, 48, 0.18);
+}
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.products-page .products .brands-logo .advisor-card .MuiCardContent-root {
+  padding: 20px 0;
+}
+
+.products-page .products .brands-logo .advisor-card-title {
   font-family: "Commissioner";
-  font-size: 20px;
-  font-weight: 500;
-  font-style: normal;
-  line-height: 36px;
-  color: #a1a1a1;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+  color: #29211b;
 }
 
-.products-page .products .brands-logo .review-desc {
-  margin-top: 10px;
+.products-page .products .brands-logo .advisor-card-description {
+  margin-top: 8px;
   font-family: "DM Sans";
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
-  font-style: normal;
-  line-height: 24px;
-  color: #616164;
+  line-height: 22px;
+  color: #0a0909;
 }
 
-.products-page .products .brands-logo .about-left {
-  display: flex;
-  align-items: flex-end;
-  width: 50%;
-  height: auto;
-  border-radius: 0px 50px 0px 0px;
-  background-position: center;
-  background-size: cover;
+/* =========================================================
+   CARD ACTIONS
+========================================================= */
+
+.products-page .products .brands-logo .advisor-card .MuiCardActions-root {
+  padding: 0;
+  margin-top: auto;
 }
+
+.products-page .products .brands-logo .advisor-card button {
+  border-radius: 10px;
+  font-family: "Poppins";
+  font-weight: 600;
+}
+
+.products-page .products .brands-logo .advisor-card .MuiIconButton-root {
+  border-radius: 10px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1250px) {
+  .products-page .products .brands-logo .brand-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .products-page .products .brands-logo .advisor-card {
+    width: 260px;
+  }
+}
+
+@media (max-width: 900px) {
+  .products-page .products .brands-logo {
+    min-height: auto;
+  }
+
+  .products-page .products .brands-logo .brand-list {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .products-page .products .brands-logo {
+    padding-bottom: 50px;
+  }
+
+  .products-page .products .brands-logo .family-brands {
+    padding-top: 45px;
+  }
+
+  .products-page .products .brands-logo .category-title {
+    padding: 0 20px;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+  }
+
+  .products-page .products .brands-logo .brand-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .products-page .products .brands-logo .advisor-card {
+    width: 260px;
+  }
+}
+
+/* ------------------------ */
 
 .products-page .products .address {
   height: auto;

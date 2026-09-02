@@ -7,7 +7,6 @@ import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
 import { CardOverflow } from "@mui/joy";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 
 // ======
@@ -25,14 +24,14 @@ const popularDishesRetriever = createSelector(
   (popularDishes) => ({ popularDishes }),
 );
 
-export default function PopularDishes() {
+export default function CustomerFavorites() {
   const { popularDishes } = useSelector(popularDishesRetriever);
   console.log("popularDishes => :", popularDishes);
   return (
     <div className="popular-dishes-frame">
       <Container>
         <Stack className="popular-section">
-          <Box className="category-title">Popular Dishes</Box>
+          <Box className="category-title">Customer Favorites</Box>
           <Stack className="cards-frame ">
             {popularDishes.length !== 0 ? (
               popularDishes.map((product: Product) => {

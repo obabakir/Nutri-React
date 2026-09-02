@@ -48,51 +48,208 @@
   color: #d7b586;
 }
 
-/* PopularDishes */
+/** CUSTOMER FAVORITES **/
 
 .homepage .popular-dishes-frame {
   width: 100%;
-  height: 580px;
-  background: #f8f8ff;
+  min-height: 650px;
+  padding: 55px 0 65px;
+  background: #eef1eb;
 }
+
+/* =========================
+   MAIN SECTION
+========================= */
 
 .homepage .popular-dishes-frame .popular-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 45px;
+  align-items: stretch;
+  margin-top: 0;
 }
 
+/* =========================
+   TITLE
+========================= */
+
 .homepage .popular-dishes-frame .popular-section .category-title {
-  font-family: "Roboto Serif";
-  font-size: 36px;
-  font-weight: 600;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 1.44px;
-  text-align: center;
-  color: #000;
+  position: relative;
+  width: 100%;
+  font-family: "Poppins";
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: left;
+  color: #17231b;
 }
+
+.homepage .popular-dishes-frame .popular-section .category-title::before {
+  content: "WHAT OUR CUSTOMERS LOVE";
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ff9200;
+}
+
+.homepage .popular-dishes-frame .popular-section .category-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 5px;
+  border-radius: 10px;
+  margin-top: 14px;
+  background: #ff9200;
+}
+
+/* =========================
+   CARDS FRAME
+========================= */
 
 .homepage .popular-dishes-frame .popular-section .cards-frame {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: stretch;
   width: 100%;
-  margin-top: 43px;
+  margin-top: 42px;
 }
 
+/* =========================
+   CARD
+========================= */
+
 .homepage .popular-dishes-frame .cards-frame .card {
-  min-width: 300px;
-  min-height: 430px;
+  position: relative;
+  overflow: hidden;
+  width: 285px;
+  min-width: 285px;
+  height: 390px;
+  min-height: 390px;
+  border: none;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(30, 40, 30, 0.08);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
   cursor: pointer;
 }
 
-.homepage .popular-dishes-frame .popular-section .card .card-cover {
-  background:
-    linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 40%),
-    linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+.homepage .popular-dishes-frame .cards-frame .card:hover {
+  box-shadow: 0 20px 45px rgba(30, 40, 30, 0.16);
+  transform: translateY(-12px);
 }
+
+/* =========================
+   IMAGE
+========================= */
+
+.homepage .popular-dishes-frame .cards-frame .card img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.45s ease;
+  object-fit: cover;
+}
+
+.homepage .popular-dishes-frame .cards-frame .card:hover img {
+  transform: scale(1.08);
+}
+
+/* =========================
+   IMAGE OVERLAY
+========================= */
+
+.homepage .popular-dishes-frame .popular-section .card .card-cover {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.35) 35%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+/* =========================
+   PRODUCT CONTENT
+========================= */
+
+.homepage .popular-dishes-frame .cards-frame .card .MuiCardContent-root {
+  padding: 18px;
+}
+
+/* =========================
+   PRODUCT NAME
+========================= */
+
+.homepage .popular-dishes-frame .cards-frame .card h2 {
+  overflow: hidden;
+  margin-bottom: 5px;
+  font-family: "Poppins";
+  font-size: 17px !important;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #ffffff !important;
+}
+
+/* =========================
+   VIEWS
+========================= */
+
+.homepage
+  .popular-dishes-frame
+  .cards-frame
+  .card
+  .MuiCardContent-root
+  .MuiTypography-root:last-child {
+  display: flex;
+  align-items: center;
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.homepage .popular-dishes-frame .cards-frame .card .MuiCardContent-root svg {
+  margin-left: 6px;
+  font-size: 22px;
+  color: antiquewhite;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.homepage .popular-dishes-frame .cards-frame .card .MuiCardOverflow-root {
+  display: flex;
+  align-items: center;
+  height: 65px;
+  padding: 10px 16px;
+  border: none;
+  background: #ffffff;
+}
+
+.homepage
+  .popular-dishes-frame
+  .cards-frame
+  .card
+  .MuiCardOverflow-root
+  .MuiTypography-root {
+  display: block;
+  overflow: hidden;
+  font-family: "Poppins";
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-overflow: ellipsis;
+  color: #090b09;
+}
+
+/* =========================
+   NO DATA
+========================= */
 
 .homepage .popular-dishes-frame .no-data {
   display: flex;
@@ -101,112 +258,244 @@
   width: 100%;
   height: 300px;
   font-family: "Poppins";
-  font-size: 30px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 34px;
-  text-transform: capitalize;
-  color: #e3c08d;
+  font-size: 24px;
+  font-weight: 500;
+  color: #89938c;
 }
 
 /** NEW PRODUCTS **/
 
 .homepage .new-products-frame {
-  display: flex;
   width: 100%;
-  height: 605px;
-  background: #f8f8ff;
+  min-height: 650px;
+  padding: 55px 0 65px;
+  background: #eef1eb;
 }
 
-.homepage .main {
+/* =========================
+   MAIN
+========================= */
+
+.homepage .new-products-frame .main {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 45px;
+  align-items: stretch;
+  margin-top: 0;
 }
+
+/* =========================
+   TITLE
+========================= */
 
 .homepage .new-products-frame .category-title {
-  font-family: "Dancing Script";
-  font-size: 36px;
-  font-weight: 700;
-  font-style: normal;
-  line-height: 43px;
+  position: relative;
+  width: 100%;
+  font-family: "Poppins";
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: left;
+  color: #17231b;
 }
+
+.homepage .new-products-frame .category-title::before {
+  content: "NUTRITION FOR YOUR GOALS";
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ff9200;
+}
+
+.homepage .new-products-frame .category-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 5px;
+  border-radius: 10px;
+  margin-top: 14px;
+  background: #ff9200;
+}
+
+/* =========================
+   CARDS FRAME
+========================= */
 
 .homepage .new-products-frame .main .cards-frame {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
-  margin: 47px 2px 2px 2px;
+  margin: 42px 0 0;
 }
 
+/* =========================
+   CARD
+========================= */
+
 .homepage .new-products-frame .main .card {
-  width: 290px;
-  height: 335px;
+  position: relative;
+  overflow: hidden;
+  width: 285px;
+  height: 390px;
+  padding: 0;
+  border: none;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(30, 40, 30, 0.08);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
   cursor: pointer;
 }
 
+.homepage .new-products-frame .main .card:hover {
+  box-shadow: 0 20px 45px rgba(30, 40, 30, 0.16);
+  transform: translateY(-12px);
+}
+
+/* =========================
+   IMAGE AREA
+========================= */
+
+.homepage .new-products-frame .card .MuiCardOverflow-root:first-child {
+  position: relative;
+  overflow: hidden;
+  height: 285px;
+  background: #f4f5f1;
+}
+
+.homepage .new-products-frame .card img {
+  width: 100%;
+  height: 100%;
+  padding: 18px;
+  transition: transform 0.45s ease;
+  object-fit: contain;
+}
+
+.homepage .new-products-frame .card:hover img {
+  transform: scale(1.08);
+}
+
+/* =========================
+   BADGE
+========================= */
+
 .homepage .new-products-frame .product-sale {
   position: absolute;
-  z-index: 100;
+  top: 15px;
+  left: 15px;
+  z-index: 20;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90px;
-  height: 30px;
-  border-radius: 25px;
-  margin-top: 10px;
+  min-width: 82px;
+  height: 32px;
+  padding: 0 13px;
+  border-radius: 30px;
   font-family: "Poppins";
-  font-size: 12px;
-  font-weight: 600;
-  font-style: normal;
-  line-height: 21px;
-  color: #0b0b0d;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #ffffff;
   background: #ff9200;
-  box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(255, 146, 0, 0.3);
 }
+
+/* =========================
+   PRODUCT DETAIL
+========================= */
 
 .homepage .new-products-frame .product-detail {
   display: flex;
-  justify-content: center;
-  width: auto;
-  height: 49%;
-  border-color: #f8f8ff;
-  border-top: 1px solid;
-  margin-top: -12px;
-  background-color: #fafbfb;
+  width: 100%;
+  height: 105px;
+  padding: 15px 18px;
+  border: none;
+  margin: 0;
+  background: #ffffff;
 }
 
 .homepage .new-products-frame .product-detail .info {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* =========================
+   NAME + PRICE
+========================= */
+
+.homepage .new-products-frame .product-detail .info > :first-child {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
 .homepage .new-products-frame .product-detail .title {
-  width: 65px;
-  font-weight: 500;
+  overflow: hidden;
+  width: auto;
+  max-width: 170px;
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 600;
+  color: #17231b;
 }
 
 .homepage .new-products-frame .product-detail .price {
-  width: 20px;
+  width: auto;
   margin-left: 10px;
-  font-weight: 500;
+  font-family: "Poppins";
+  font-size: 18px;
+  font-weight: 800;
+  color: #ff9200;
 }
 
+/* =========================
+   DIVIDER
+========================= */
+
 .homepage .new-products-frame .product-detail .divider {
-  width: 2px;
-  margin: 0 10px 0 10px;
-  background-color: #d9d9d9;
+  width: 1px;
+  height: 20px;
+  margin: 0 10px;
+  background: #dddddd;
 }
+
+/* =========================
+   VIEWS
+========================= */
 
 .homepage .new-products-frame .product-detail .views {
   display: flex;
   align-items: center;
-  font-weight: 500;
+  margin-top: 10px;
+  font-family: "Poppins";
+  font-size: 14px;
+
+  /* increased */
+  font-weight: 600;
+
+  /* stronger */
+  color: #6f7771;
 }
+
+.homepage .new-products-frame .product-detail .views svg {
+  margin-left: 7px;
+  font-size: 22px;
+
+  /* increased */
+  color: #6f7771;
+}
+
+/* =========================
+   NO DATA
+========================= */
 
 .homepage .new-products-frame .no-data {
   display: flex;
@@ -215,143 +504,513 @@
   width: 100%;
   height: 300px;
   font-family: "Poppins";
-  font-size: 30px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 34px;
-  text-transform: capitalize;
-  color: #e3c08d;
+  font-size: 24px;
+  font-weight: 500;
+  color: #89938c;
 }
 
-/** ADVERTISEMENT **/
+/* ------ */
+/* =========================================================
+   HOME ADS / BRANDS
+========================================================= */
 
-.homepage .ads-restaurant-frame {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-  height: 693px;
-  box-shadow: -3px 0px 20px 14px #34343480;
-  transform: perspective(0px);
-}
-
-.homepage .ads-restaurant-frame .ads-video {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-  background: #0c0e12;
-  box-shadow: 0px -8px 90px rgb(215 215 255);
-  transform: scale(1.5);
-}
-
-/** ACTIVE USERS **/
-
-.homepage .active-users-frame {
+.homepage .home-ads {
   display: flex;
   width: 100%;
-  height: 550px;
-  background: #f8f8ff;
+  height: auto;
+  min-height: 630px;
+  padding-bottom: 60px;
+  margin-top: 60px;
+  background-color: #d7a760;
 }
 
-.homepage .active-users-frame .main {
+.homepage .home-ads .home-ads-main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 60px;
+  padding-top: 70px;
 }
 
-.homepage .active-users-frame .category-title {
+/* =========================================================
+   TITLE
+========================================================= */
+
+.homepage .home-ads .home-ads-title {
   font-family: "Dancing Script";
   font-size: 36px;
   font-weight: 700;
   font-style: normal;
   line-height: 43px;
+  color: #6f5238;
 }
 
-.homepage .cards-frame {
+/* =========================================================
+   CARD LIST
+========================================================= */
+
+.homepage .home-ads .home-ads-list {
+  display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
-.homepage .cards-frame .card {
-  min-width: 305px;
-  min-height: 305px;
-  margin: 5px;
+/* =========================================================
+   ADVISOR / BRAND CARD
+========================================================= */
+
+.homepage .home-ads .home-ads-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 260px;
+  min-height: 350px;
+  padding: 20px;
+  border: 1px solid #e5d4c1;
+  border-radius: 20px;
+  background: #fffaf4;
+  box-shadow: 0px -1px 13px 5px rgba(186, 178, 227, 0.35);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.homepage .home-ads .home-ads-card:hover {
+  box-shadow: 0px 10px 25px rgba(92, 70, 48, 0.22);
+  transform: translateY(-7px);
+}
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.homepage .home-ads .home-ads-card-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.homepage .home-ads .home-ads-card-top .MuiAvatar-root {
+  box-shadow: 0px 4px 10px rgba(92, 70, 48, 0.18);
+}
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.homepage .home-ads .home-ads-card .MuiCardContent-root {
+  padding: 20px 0;
+}
+
+.homepage .home-ads .home-ads-card-title {
+  font-family: "Commissioner";
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+  color: #29211b;
+}
+
+.homepage .home-ads .home-ads-card-description {
+  margin-top: 8px;
+  font-family: "DM Sans";
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #0a0909;
+}
+
+/* =========================================================
+   CARD ACTIONS
+========================================================= */
+
+.homepage .home-ads .home-ads-card .MuiCardActions-root {
+  padding: 0;
+  margin-top: auto;
+}
+
+.homepage .home-ads .home-ads-card button {
+  border-radius: 10px;
+  font-family: "Poppins";
+  font-weight: 600;
+}
+
+.homepage .home-ads .home-ads-card .MuiIconButton-root {
+  border-radius: 10px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1250px) {
+  .homepage .home-ads .home-ads-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .homepage .home-ads .home-ads-card {
+    width: 260px;
+  }
+}
+
+@media (max-width: 900px) {
+  .homepage .home-ads {
+    min-height: auto;
+  }
+
+  .homepage .home-ads .home-ads-list {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .homepage .home-ads {
+    padding-bottom: 50px;
+  }
+
+  .homepage .home-ads .home-ads-main {
+    padding-top: 45px;
+  }
+
+  .homepage .home-ads .home-ads-title {
+    padding: 0 20px;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+  }
+
+  .homepage .home-ads .home-ads-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .homepage .home-ads .home-ads-card {
+    width: 260px;
+  }
+}
+
+/* ======= */
+/* =========================================================
+   ACTIVE USERS
+========================================================= */
+
+.homepage .active-users-frame {
+  width: 100%;
+  min-height: 600px;
+  padding: 60px 0 75px;
+  background: #eef1eb;
+}
+
+.homepage .active-users-frame .main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-top: 0;
+}
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.homepage .active-users-frame .category-title {
+  position: relative;
+  width: 100%;
+  font-family: "Poppins";
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: left;
+  color: #17231b;
+}
+
+.homepage .active-users-frame .category-title::before {
+  content: "NUTRIMART COMMUNITY";
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ff9200;
+}
+
+.homepage .active-users-frame .category-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 5px;
+  border-radius: 10px;
+  margin-top: 14px;
+  background: #ff9200;
+}
+
+/* =========================================================
+   CARDS FRAME
+========================================================= */
+
+.homepage .active-users-frame .cards-frame {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  margin-top: 42px;
+}
+
+/* =========================================================
+   USER CARD
+========================================================= */
+
+.homepage .active-users-frame .cards-frame .card {
+  position: relative;
+  overflow: hidden;
+  width: 280px;
+  min-width: 280px;
+  height: 350px;
+  min-height: 350px;
+  padding: 0;
+  border: none;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(30, 40, 30, 0.08);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
   cursor: pointer;
 }
 
-.homepage .cards-frame .member-nickname {
-  font-size: medium;
-  text-align: center;
+/* =========================================================
+   HOVER
+========================================================= */
+
+.homepage .active-users-frame .cards-frame .card:hover {
+  box-shadow: 0 20px 45px rgba(30, 40, 30, 0.16);
+  transform: translateY(-12px);
 }
 
-.homepage .cards-frame .no-data {
+/* =========================================================
+   USER IMAGE
+========================================================= */
+
+.homepage
+  .active-users-frame
+  .cards-frame
+  .card
+  .MuiCardOverflow-root:first-child {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 290px;
+  background: #f3f5f1;
+}
+
+.homepage
+  .active-users-frame
+  .cards-frame
+  .card
+  .MuiCardOverflow-root:first-child
+  img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.45s ease;
+  object-fit: cover;
+}
+
+.homepage
+  .active-users-frame
+  .cards-frame
+  .card:hover
+  .MuiCardOverflow-root:first-child
+  img {
+  transform: scale(1.07);
+}
+
+/* =========================================================
+   ACTIVE BADGE
+========================================================= */
+
+.homepage .active-users-frame .cards-frame .card::before {
+  content: "● ACTIVE";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 20;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-family: "Poppins";
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  background: #4caf50;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   MEMBER NICKNAME
+========================================================= */
+
+.homepage .active-users-frame .cards-frame .member-nickname {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  margin: 0;
+  font-family: "Poppins";
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  color: #17231b;
+  background: #ffffff;
+}
+
+/* =========================================================
+   NO DATA
+========================================================= */
+
+.homepage .active-users-frame .cards-frame .no-data {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 300px;
   font-family: "Poppins";
-  font-size: 30px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 34px;
-  text-transform: capitalize;
-  color: #e3c08d;
+  font-size: 24px;
+  font-weight: 500;
+  color: #89938c;
 }
 
-/** EVENTS **/
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+  .homepage .active-users-frame .cards-frame {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage .active-users-frame {
+    padding: 45px 0 55px;
+  }
+
+  .homepage .active-users-frame .category-title {
+    font-size: 28px;
+  }
+
+  .homepage .active-users-frame .cards-frame {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage .active-users-frame .category-title {
+    font-size: 25px;
+  }
+
+  .homepage .active-users-frame .category-title::before {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .homepage .active-users-frame .cards-frame .card {
+    width: 100%;
+    min-width: 0;
+    max-width: 340px;
+  }
+}
+
+/* =========================================================
+   PARTNER BRANDS
+========================================================= */
 
 .homepage .events-frame {
-  display: flex;
   width: 100%;
-  height: 745px;
-  background: #f8f8ff;
+  min-height: 760px;
+  padding: 70px 0 55px;
+  background: #eef1eb;
 }
 
 .homepage .events-frame .events-main {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.homepage .events-frame .events-main .events-text {
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.homepage .events-frame .events-text {
+  position: relative;
+  z-index: 50;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: auto;
-  height: 70px;
+  width: 100%;
   margin-bottom: 40px;
 }
 
 .homepage .events-frame .category-title {
-  padding-top: 20px;
-  font-family: "Dancing Script";
-  font-size: 36px;
-  font-weight: 700;
-  font-style: normal;
-  line-height: 43px;
-}
-
-.homepage .events-frame .events-main .events-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-}
-
-.homepage .events-frame .events-info .events-info-frame {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 500px;
-  height: 100%;
+  font-family: "Poppins";
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  color: #17231b;
+}
+
+.homepage .events-frame .category-title::before {
+  content: "TRUSTED NUTRITION. TRUSTED PARTNERS.";
+  display: block;
+  margin-bottom: 9px;
+  font-family: "Poppins";
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ff9200;
+}
+
+.homepage .events-frame .category-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 5px;
+  border-radius: 10px;
+  margin: 14px auto 0;
+  background: #ff9200;
+}
+
+.homepage .events-frame .category-subtitle {
+  display: none;
+}
+
+/* =========================================================
+   SWIPER
+========================================================= */
+
+.homepage .events-frame .events-info {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 500px;
 }
 
 .homepage .events-frame .swiper-wrapper {
@@ -359,135 +1018,356 @@
   flex-direction: row;
 }
 
-.homepage .events-frame .events-img {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  background-size: cover;
-}
+/* =========================================================
+   SLIDE
+========================================================= */
 
-.homepage .events-frame .dot-frame-pagination {
+.homepage .events-frame .events-info-frame {
   position: relative;
   display: flex;
-  width: auto;
+  overflow: hidden;
+  flex-direction: column;
+  width: 760px !important;
+  height: 500px;
+  border-radius: 28px;
+  background: #737671;
+  box-shadow: 0 15px 40px rgba(30, 40, 30, 0.14);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+  cursor: pointer;
 }
+
+.homepage .events-frame .events-info-frame:hover {
+  box-shadow: 0 25px 55px rgba(30, 40, 30, 0.22);
+}
+
+/* =========================================================
+   BACKGROUND IMAGE
+========================================================= */
+
+.homepage .events-frame .events-img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  transition: transform 0.6s ease;
+  object-fit: cover;
+  inset: 0;
+}
+
+.homepage .events-frame .events-info-frame:hover .events-img {
+  transform: scale(1.03);
+}
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.homepage .events-frame .events-overlay {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.25) 42%,
+    rgba(0, 0, 0, 0.08) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  inset: 0;
+}
+
+/* =========================================================
+   COMPANY INFORMATION
+========================================================= */
 
 .homepage .events-frame .events-desc {
   position: absolute;
-  bottom: 5px;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
   display: flex;
-  width: 90%;
-  height: auto;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 7px;
-  background: #f8f8ff;
-  box-shadow: 0px 40px 30px rgba(25, 25, 46, 0.04);
-}
-
-.homepage .events-frame .events-desc .events-bott {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  width: 97%;
-  height: auto;
+  width: 62%;
+  height: 100%;
+  padding: 45px;
 }
 
-.homepage .events-frame .events-desc .events-bott .bott-left {
+.homepage .events-frame .events-brand {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
 }
 
-.homepage .events-frame .bott-left .event-title-speaker {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+/* =========================================================
+   PARTNER LABEL
+========================================================= */
+
+.homepage .events-frame .partner-label {
+  width: fit-content;
+  padding: 7px 13px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #ffffff;
+  background: #ff9200;
+  box-shadow: 0 5px 15px rgba(255, 146, 0, 0.25);
 }
 
-.homepage .events-frame .event-title-speaker .event-organizator {
-  display: flex;
-  align-items: center;
+/* =========================================================
+   BRAND NAME
+========================================================= */
+
+.homepage .events-frame .brand-name {
+  margin: 0 0 18px;
+  font-family: "Poppins";
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
 }
 
-.homepage .events-frame .event-title-speaker .event-organizator img {
-  width: 20px;
-  margin-right: 10px;
-}
+/* =========================================================
+   BRAND DESCRIPTION
+========================================================= */
 
-.homepage .events-frame .event-organizator .spec-text-author {
-  font-family: "GT Walsheim Pro";
-  font-style: normal;
-  line-height: 34px;
-  color: #140342;
-}
-
-.homepage .events-frame .bott-left .text-desc {
-  margin-top: 10px;
-  font-family: "GT Walsheim Pro";
-  font-size: 17px;
+.homepage .events-frame .brand-desc {
+  max-width: 470px;
+  margin: 0;
+  font-family: "Poppins";
+  font-size: 16px;
   font-weight: 400;
-  font-style: normal;
-  line-height: 26px;
-  color: #4f547b;
+  line-height: 25px;
+  color: rgba(255, 255, 255, 0.82);
 }
 
-.homepage .events-frame .bott-left .bott-info {
+/* =========================================================
+   BRAND INFO
+========================================================= */
+
+.homepage .events-frame .brand-info {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  width: 100%;
-  height: 16px;
-  margin-top: 10px;
+  gap: 35px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  margin-top: 30px;
 }
 
-.homepage .events-frame .bott-info .bott-info-main {
+.homepage .events-frame .brand-info-item {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: auto;
-  height: 100%;
-  margin-left: 10px;
-  font-family: "GT Walsheim Pro";
+  flex-direction: column;
+  gap: 5px;
+}
+
+.homepage .events-frame .info-label {
+  font-family: "Poppins";
   font-size: 14px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 16px;
-  color: #4f547b;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #ff9200;
 }
 
-.homepage .events-frame .bott-info .bott-info-main img {
-  margin-right: 10px;
+.homepage .events-frame .info-value {
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
 }
 
-.homepage .events-frame .swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 5px;
-  text-align: center;
-  background: #f8f8ff;
-  opacity: 1;
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.homepage .events-frame .prev-next-frame {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 35px;
+  margin-top: 35px;
 }
 
-.homepage .events-frame .swiper-pagination-bullet-active {
-  border-radius: 50%;
-  background: #343434;
-}
+/* ARROW BUTTONS */
 
-/* ---- */
-
-.homepage .events-frame .events-main .prev-next-frame {
+.homepage .events-frame .custom-prev,
+.homepage .events-frame .custom-next {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  flex-shrink: 0;
+  width: 25px;
   height: 25px;
-  margin: 40px 0 40px 0;
+  cursor: pointer;
 }
 
-/* ---- */
+.homepage .events-frame .custom-prev img,
+.homepage .events-frame .custom-next img {
+  display: block;
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+/* LEFT ← */
+
+.homepage .events-frame .custom-prev img {
+  transform: rotate(180deg);
+}
+
+/* RIGHT → */
+
+.homepage .events-frame .custom-next img {
+  transform: rotate(0deg);
+}
+
+/* PAGINATION */
+
+.homepage .events-frame .dot-frame-pagination {
+  position: relative !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: auto !important;
+  height: 20px;
+  margin: 0 20px;
+  transform: none !important;
+}
+
+/* DOTS */
+
+.homepage .events-frame .swiper-pagination-bullet {
+  display: block !important;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 4px !important;
+  background: #c8cec8;
+  opacity: 1;
+}
+
+.homepage .events-frame .swiper-pagination-bullet-active {
+  width: 24px;
+  border-radius: 10px;
+  background: #ff9200;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .homepage .events-frame {
+    padding: 55px 0;
+  }
+
+  .homepage .events-frame .events-info-frame {
+    width: 680px !important;
+  }
+
+  .homepage .events-frame .events-desc {
+    width: 70%;
+    padding: 35px;
+  }
+
+  .homepage .events-frame .brand-name {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 700px) {
+  .homepage .events-frame {
+    min-height: 650px;
+  }
+
+  .homepage .events-frame .category-title {
+    font-size: 28px;
+  }
+
+  .homepage .events-frame .events-info {
+    height: 430px;
+  }
+
+  .homepage .events-frame .events-info-frame {
+    width: 90% !important;
+    height: 430px;
+  }
+
+  .homepage .events-frame .events-desc {
+    align-items: flex-end;
+    width: 100%;
+    height: auto;
+    padding: 30px;
+  }
+
+  .homepage .events-frame .events-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(15, 24, 18, 0.65) 0%,
+      rgba(15, 24, 18, 0.4) 40%,
+      rgba(15, 24, 18, 0.12) 75%,
+      rgba(15, 24, 18, 0) 100%
+    );
+  }
+
+  .homepage .events-frame .brand-name {
+    font-size: 28px;
+  }
+
+  .homepage .events-frame .brand-desc {
+    font-size: 13px;
+    line-height: 21px;
+  }
+
+  .homepage .events-frame .brand-info {
+    gap: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage .events-frame .category-title {
+    font-size: 25px;
+  }
+
+  .homepage .events-frame .category-title::before {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .homepage .events-frame .events-info-frame {
+    width: 92% !important;
+    height: 400px;
+  }
+
+  .homepage .events-frame .events-info {
+    height: 400px;
+  }
+
+  .homepage .events-frame .events-desc {
+    padding: 25px;
+  }
+
+  .homepage .events-frame .brand-name {
+    font-size: 24px;
+  }
+
+  .homepage .events-frame .brand-desc {
+    font-size: 12px;
+    line-height: 19px;
+  }
+
+  .homepage .events-frame .brand-info {
+    gap: 15px;
+  }
+}

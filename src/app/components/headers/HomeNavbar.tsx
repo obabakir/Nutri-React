@@ -1,10 +1,3 @@
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-  useContext,
-  useRef,
-} from "react";
 import {
   Box,
   Button,
@@ -14,7 +7,7 @@ import {
   MenuItem,
   Stack,
 } from "@mui/material";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
 
 import { CartItem } from "../../../lib/types/search";
@@ -63,7 +56,7 @@ export default function HomeNavbar(props: HomeNavbarrProps) {
             <NavLink to="/">
               <img
                 className="brand-logo"
-                src="/icons/burak.svg"
+                src="/img/project-logo.png"
                 alt="rasm bor"
               />
             </NavLink>
@@ -126,7 +119,7 @@ export default function HomeNavbar(props: HomeNavbarrProps) {
                     ? `${serverApi}/${authMember?.memberImages}`
                     : "/icons/default-user.svg"
                 }
-                aria-haspopup={"true"}
+                alt="User Avatar"
                 onClick={handleLogoutClick}
               />
             )}

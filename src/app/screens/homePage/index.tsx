@@ -1,25 +1,25 @@
 import React, { useEffect } from "react";
 
-import { Container } from "@mui/material";
+// import { Container } from "@mui/material";
 import Statistics from "./Statistics";
-import PopularDishes from "./PopularDishes";
-import NewDishes from "./NewDishes";
+import CustomerFavorites from "./CustomerFavorites";
+import NewProducts from "./NewProducts";
 import Advertisement from "./Advertisement";
 import ActiveUsers from "./ActiveUsers";
 import Events from "./Events";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { createSelector } from "reselect";
+// import { createSelector } from "reselect";
 import {
   setNewDishes,
   setPopularDishes /*setTestGroup*/,
   setTopUsers,
 } from "./slice";
-import { retrievePopularDishes } from "./selector";
+// import { retrievePopularDishes } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { ProductService } from "../../services/ProductService"; // or the correct path to ProductService
-import { ProductCollection } from "../../../lib/enums/product.enum";
+// import { ProductCollection } from "../../../lib/enums/product.enum";
 import "../../../css/home.css";
 import MemberService from "../../services/MemberService";
 import { Member } from "../../../lib/types/member";
@@ -59,7 +59,7 @@ export default function HomePage() {
         page: 1,
         limit: 4,
         order: "productViews",
-        productCollection: ProductCollection.SUPPLEMENT,
+        // productCollection: ProductCollection.SUPPLEMENT,
       })
       .then((data) => {
         setPopularDishes(data);
@@ -91,8 +91,8 @@ export default function HomePage() {
   return (
     <div className="homepage">
       <Statistics />
-      <PopularDishes />
-      <NewDishes />
+      <CustomerFavorites />
+      <NewProducts />
       <Advertisement />
       <ActiveUsers />
       <Events />

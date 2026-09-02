@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Box, Container, Stack } from "@mui/material";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
@@ -13,16 +13,15 @@ import { useSelector } from "react-redux";
 
 import { createSelector } from "reselect";
 
-import { retrieveNewDishes, retrievePopularDishes } from "./selector";
+import { retrieveNewDishes } from "./selector";
 import { Product } from "../../../lib/types/product";
 
 import { serverApi } from "../../../lib/config";
-import { ProductCollection } from "../../../lib/enums/product.enum";
 
 const newDishesRetriever = createSelector(retrieveNewDishes, (newDishes) => ({
   newDishes,
 }));
-export default function NewDishes() {
+export default function NewProducts() {
   const { newDishes } = useSelector(newDishesRetriever);
   console.log("newDishes =>:", newDishes);
 
@@ -30,7 +29,7 @@ export default function NewDishes() {
     <div className={"new-products-frame"}>
       <Container>
         <Stack className={"main"}>
-          <Box className={"category-title"}>Fresh Menu</Box>
+          <Box className={"category-title"}>New & On Sale</Box>
           <Stack className={"cards-frame"}>
             <CssVarsProvider>
               {newDishes.length !== 0 ? (
