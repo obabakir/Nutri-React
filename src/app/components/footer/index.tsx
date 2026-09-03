@@ -8,7 +8,7 @@ const Footers = styled.div`
   height: 590px;
   display: flex;
   background: #343434;
-  background-size: cover;
+  box-sizing: border-box;
 `;
 
 export default function Footer() {
@@ -17,83 +17,109 @@ export default function Footer() {
   return (
     <Footers>
       <Container>
-        <Stack direction={"row"} sx={{ mt: "94px" }}>
-          <Stack direction={"column"} style={{ width: "340px" }}>
+        {/* ================= MAIN FOOTER ================= */}
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          sx={{
+            mt: "94px",
+            width: "100%",
+          }}
+        >
+          {/* ================= LEFT ================= */}
+          <Stack
+            direction="column"
+            sx={{
+              width: "340px",
+            }}
+          >
             <Box>
-              <img width={"100px"} src={"/icons/burak.svg"} />
+              <img
+                className="footer-logo"
+                src="/img/project-logo.png"
+                alt="NutriMart"
+              />
             </Box>
-            <Box className={"foot-desc-txt"}>
-              Focusing on the gourmet Turkish breakfast as well as the youth
-              society, CZN Burak Gurme aims to bring Turkish cuisine back. CZN
-              Burak Gurme creates an illusion with its cuisine.
+
+            <Box className="foot-desc-txt">
+              NutriMart makes quality nutrition products simple to discover,
+              compare, and shop online. We care about your physical wellness and
+              beauty!
             </Box>
+
             <Box className="sns-context">
-              <img src={"/icons/facebook.svg"} />
-              <img src={"/icons/twitter.svg"} />
-              <img src={"/icons/instagram.svg"} />
-              <img src={"/icons/youtube.svg"} />
+              <img src="/icons/facebook.svg" alt="Facebook" />
+              <img src="/icons/twitter.svg" alt="Twitter" />
+              <img src="/icons/instagram.svg" alt="Instagram" />
+              <img src="/icons/youtube.svg" alt="YouTube" />
             </Box>
           </Stack>
-          <Stack sx={{ ml: "288px" }} direction={"row"}>
-            <Stack>
-              <Box>
-                <Box className={"foot-category-title"}>Bo'limlar</Box>
-                <Box className={"foot-category-link"}>
-                  <Link to="/">Home</Link>
-                  <Link to="/products">Products</Link>
-                  {authMember && <Link to="/orders">Orders</Link>}
-                  <Link to="/help">Help</Link>
+
+          {/* ================= RIGHT ================= */}
+          <Stack
+            direction="row"
+            sx={{
+              gap: "100px",
+              pt: "8px",
+            }}
+          >
+            {/* SECTIONS */}
+            <Box>
+              <Box className="foot-category-title">Sections</Box>
+
+              <Box className="foot-category-link">
+                <Link to="/">Home</Link>
+                <Link to="/products">Products</Link>
+
+                {authMember && <Link to="/orders">Orders</Link>}
+
+                <Link to="/help">Help</Link>
+              </Box>
+            </Box>
+
+            {/* VISIT US */}
+            <Box>
+              <Box className="foot-category-title">Visit us</Box>
+
+              <Box className="foot-category-link">
+                <Box className="find-us">
+                  <span>L.</span>
+                  <div>South Korea, Pyeongtaek</div>
+                </Box>
+
+                <Box className="find-us">
+                  <span>P.</span>
+                  <div>+010-9504-0797</div>
+                </Box>
+
+                <Box className="find-us">
+                  <span>E.</span>
+                  <div>nutrimart@gmail.com</div>
+                </Box>
+
+                <Box className="find-us">
+                  <span>H.</span>
+                  <div>Visit 24/7</div>
                 </Box>
               </Box>
-            </Stack>
-            <Stack sx={{ ml: "100px" }}>
-              <Box>
-                <Box className={"foot-category-title"}>Find us</Box>
-                <Box
-                  className="foot-category-link"
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    mt: "20px",
-                  }}
-                >
-                  <Box
-                    className="find-us"
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                    }}
-                  >
-                    <span>L.</span>
-                    <div>Downtown, Dubai</div>
-                  </Box>
-
-                  <Box className="find-us">
-                    <span>P.</span>
-                    <div>+971 4 554 7777</div>
-                  </Box>
-
-                  <Box className="find-us">
-                    <span>E.</span>
-                    <div>devexuz@gmail.com</div>
-                  </Box>
-
-                  <Box className="find-us">
-                    <span>H.</span>
-                    <div>Visit 24 hours</div>
-                  </Box>
-                </Box>
-              </Box>
-            </Stack>
+            </Box>
           </Stack>
         </Stack>
-        <Stack
-          style={{ border: "1px solid #C5C8C9", width: "100%", opacity: "0.2" }}
-          sx={{ mt: "80px" }}
-        ></Stack>
-        <Stack className={"copyright-txt"}>
-          © Copyright Devex Global, All rights reserved.
+
+        {/* ================= DIVIDER ================= */}
+        <Box
+          sx={{
+            width: "100%",
+            height: "1px",
+            mt: "80px",
+            background: "#c5c8c9",
+            opacity: 0.2,
+          }}
+        />
+
+        {/* ================= COPYRIGHT ================= */}
+        <Stack className="copyright-txt">
+          © Copyright NutriMart Global, All rights reserved.
         </Stack>
       </Container>
     </Footers>

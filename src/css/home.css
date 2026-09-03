@@ -3,51 +3,70 @@
   height: auto;
 }
 
-/* Statistics */
-
 .homepage .static-frame {
   width: 100%;
   height: 236px;
   background: #343434;
 }
 
-.homepage .static-frame .info {
+.homepage .static-frame .nutrimart-benefits {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
+  width: 100%;
+  height: 236px;
 }
 
-.homepage .static-frame .info .static-box {
+.homepage .static-frame .benefit-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 116px;
+  width: 210px;
+  text-align: center;
 }
 
-.homepage .static-frame .info .static-box .static-num {
+.homepage .static-frame .benefit-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #e3c08d;
+  border-radius: 50%;
+  margin-bottom: 10px;
   font-family: "Poppins";
-  font-size: 54px;
+  font-size: 18px;
+  color: #e3c08d;
+}
+
+.homepage .static-frame .benefit-title {
+  font-family: "Poppins";
+  font-size: 17px;
   font-weight: 600;
-  font-style: normal;
-  line-height: 80px;
-  text-align: center;
-  color: #d7b686;
+  line-height: 26px;
+  color: #c5c8c9;
 }
 
-.homepage .static-frame .info .static-box .static-tex {
+.homepage .static-frame .benefit-text {
+  max-width: 190px;
+  margin-top: 5px;
   font-family: "Poppins";
-  font-size: 20px;
-  font-weight: 500;
-  font-style: normal;
-  line-height: 30px;
-  text-align: center;
-  color: #d7b586;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #a8abad;
 }
 
+.homepage .static-frame .benefit-divider {
+  width: 1px;
+  height: 64px;
+  background: #e3c08d;
+  opacity: 0.45;
+}
+
+/* ========== */
 /** CUSTOMER FAVORITES **/
 
 .homepage .popular-dishes-frame {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Link, Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 
 import HomePage from "./screens/homePage";
 import ProductsPage from "./screens/productsPage";
@@ -12,15 +12,14 @@ import OtherNavbar from "./components/headers/OtherNavbar";
 
 import HelpPage from "./screens/helpPage";
 // import Test from "./screens/Testing";
-import { CartItem } from "../lib/types/search";
+
 import useBasket from "./hooks/useBasket";
 import AuthenticationModal from "./components/auth";
 
-import { T } from "../lib/types/common";
 import { sweetErrorHandling, sweetTopSuccessAlert } from "../lib/sweetAlert";
 import { Messages } from "../lib/config";
 import MemberService from "./services/MemberService";
-import { GlobalContex, useGlobals } from "./hooks/useGlabals";
+import { useGlobals } from "./hooks/useGlabals";
 
 // @ts-ignore: side-effect import of CSS without type declarations
 import "../css/app.css";
@@ -28,6 +27,7 @@ import "../css/app.css";
 import "../css/navbar.css";
 // @ts-ignore: side-effect import of CSS without type declarations
 import "../css/footer.css";
+import NavbarLinks from "./components/headers/NarbarLinks";
 function App() {
   const location = useLocation();
   // console.log("location:", location);
@@ -67,6 +67,18 @@ function App() {
 
   return (
     <>
+      <NavbarLinks
+        cartItems={cartItems}
+        onAdd={onAdd}
+        onRemove={onRemove}
+        onDelete={onDelete}
+        onDeleteAll={onDeleteAll}
+        setLoginOpen={setLoginOpen}
+        handleLogoutClick={handleLogoutClick}
+        anchorEl={anchorEl}
+        handleCloseLogout={handleCloseLogout}
+        handleLogoutRequest={handleLogoutRequest}
+      />
       {location.pathname === "/" ? (
         <HomeNavbar
           cartItems={cartItems}
@@ -82,19 +94,7 @@ function App() {
           handleLogoutRequest={handleLogoutRequest}
         />
       ) : (
-        <OtherNavbar
-          cartItems={cartItems}
-          onAdd={onAdd}
-          onRemove={onRemove}
-          onDelete={onDelete}
-          onDeleteAll={onDeleteAll}
-          setSignupOpen={setSignupOpen}
-          setLoginOpen={setLoginOpen}
-          anchorEl={anchorEl}
-          handleLogoutClick={handleLogoutClick}
-          handleCloseLogout={handleCloseLogout}
-          handleLogoutRequest={handleLogoutRequest}
-        />
+        <OtherNavbar />
       )}
       <Switch>
         <Route path="/products">

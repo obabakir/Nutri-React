@@ -10,7 +10,10 @@ import { T } from "../../../lib/types/common";
 import { Messages } from "../../../lib/config";
 import { LoginInput, MemberInput } from "../../../lib/types/member";
 import MemberService from "../../services/MemberService";
-import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import {
+  sweetErrorHandling,
+  sweetTopSuccessAlert,
+} from "../../../lib/sweetAlert";
 import { useGlobals } from "../../hooks/useGlabals";
 
 const useStyles = makeStyles((theme) => ({
@@ -103,6 +106,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
 
       /** == SAVING AUTHENTICATED URER == **/
       setAuthMember(result);
+      await sweetTopSuccessAlert("Signup successful!", 2000);
       handleSignupClose();
     } catch (err) {
       console.log("Error", err);
@@ -130,6 +134,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
 
       /** == SAVING AUTHENTICATED URER == **/
       setAuthMember(result);
+      await sweetTopSuccessAlert("Login successful!", 2000);
       handleLoginClose();
     } catch (err) {
       console.log("Error", err);
